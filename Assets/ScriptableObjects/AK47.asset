@@ -17,4 +17,6 @@ MonoBehaviour:
   fireRate: 10
   maxAmmo: 50
   range: 200
+  muzzleFlashPrefab: {fileID: 5879103527896852340, guid: 637ebd45e2da6134aa696efc6615a6fb, type: 3}
+  hitEffectPrefab: {fileID: 4044122539871706256, guid: 51c5de58124b7fd4190c01846eb6184a, type: 3}
   fireSound: {fileID: 8300000, guid: 0e974a2b61b5f7c49a24a6114f580029, type: 3}
