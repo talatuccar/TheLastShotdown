@@ -8,11 +8,14 @@ public class WeaponDataSo : ScriptableObject
     public float fireRate;
     public int maxAmmo;
     public float range;
-    //public GameObject hitEffect; // Kan efekti
-    //public Transform muzzlePoint;
+    
     public GameObject muzzleFlashPrefab;
     public GameObject hitEffectPrefab;
-    //public ParticleSystem muzzleFlashParticle;
 
-    public AudioClip fireSound;  // Ateþ sesi
+    [Header("Weapon_Shoot_Animation_Settings")]
+    public float recoilX = 2f; 
+    public float recoilY = 0.5f; 
+    public float snappiness = 10f; 
+    public float returnSpeed = 5f; 
+    public AudioClip fireSound;  
 }

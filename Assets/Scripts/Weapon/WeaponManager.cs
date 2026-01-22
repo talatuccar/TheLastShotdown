@@ -5,7 +5,9 @@ public class WeaponManager : MonoBehaviour
     private FPSInput input;
     public WeaponBase currentWeapon;
     private bool isFiring = false;
-
+    [Header("Recoil Settings")]
+    private Vector3 currentRotation;
+    private Vector3 targetRotation;
     void Awake() => input = GetComponentInParent<FPSInput>();
 
     void OnEnable()
@@ -23,7 +25,7 @@ public class WeaponManager : MonoBehaviour
     void StartFiring()
     {
         isFiring = true;
-        if (currentWeapon != null) currentWeapon.Fire(); // Ýlk týk anýnda mermi at (Hybrid sistem)
+        if (currentWeapon != null) currentWeapon.Fire(); 
     }
 
     void StopFiring() => isFiring = false;
@@ -32,7 +34,23 @@ public class WeaponManager : MonoBehaviour
     {
         if (isFiring && currentWeapon != null)
         {
-            currentWeapon.Fire(); // Basýlý tutulduðu sürece otomatik ateþ
+            currentWeapon.Fire(); 
         }
+
+        
+        targetRotation = Vector3.Lerp(targetRotation, Vector3.zero, currentWeapon.weaponData.returnSpeed * Time.deltaTime);
+    
+        currentRotation = Vector3.Slerp(currentRotation, targetRotation, currentWeapon.weaponData.snappiness * Time.deltaTime);
+
+       
+        transform.localRotation = Quaternion.Euler(currentRotation);
+    }
+
+  
+    public void ApplyRecoil()
+    {
+        targetRotation += new Vector3(-currentWeapon.weaponData.recoilX,
+            Random.Range(-currentWeapon.weaponData.recoilY, currentWeapon.weaponData.recoilY),
+            Random.Range(-currentWeapon.weaponData.recoilY, currentWeapon.weaponData.recoilY));
     }
 }

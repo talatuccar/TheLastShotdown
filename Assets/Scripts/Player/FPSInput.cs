@@ -11,7 +11,8 @@ public class FPSInput : MonoBehaviour
     public event Action OnAttackStarted;
     public event Action OnAttackCanceled;
 
-
+    public event Action CrouchStarted;
+    public event Action CrouchCanceled;
 
     public event Action JumpEvent;
     public event Action SprintStarted;
@@ -56,7 +57,15 @@ public class FPSInput : MonoBehaviour
     void OnEnable()
     {
         var playerInput = GetComponent<PlayerInput>();
-        // "Move" action'ý baþladýðýnda, deðiþtiðinde veya bittiðinde OnMove'u çaðýr
+       
+
+        
+        playerInput.actions["Sprint"].performed += _ => SprintStarted?.Invoke();
+        playerInput.actions["Sprint"].canceled += _ => SprintCanceled?.Invoke();
+
+        
+        playerInput.actions["Crouch"].performed += _ => CrouchStarted?.Invoke();
+        playerInput.actions["Crouch"].canceled += _ => CrouchCanceled?.Invoke();
         playerInput.actions["Move"].performed += OnMove;
         playerInput.actions["Move"].canceled += OnMove;
 
@@ -84,6 +93,12 @@ public class FPSInput : MonoBehaviour
 
 
         playerInput.actions["Jump"].performed -= OnJump;
+
+        playerInput.actions["Sprint"].performed -= _ => SprintStarted?.Invoke();
+        playerInput.actions["Sprint"].canceled -= _ => SprintCanceled?.Invoke();
+
+        playerInput.actions["Crouch"].performed -= _ => CrouchStarted?.Invoke();
+        playerInput.actions["Crouch"].canceled -= _ => CrouchCanceled?.Invoke();
 
     }
 }

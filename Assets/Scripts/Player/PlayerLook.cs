@@ -22,7 +22,7 @@ public class PlayerLook : MonoBehaviour
     void Update()
     {
        
-            // Mouse hassasiyetini deltaTime ile çarparak normalize ediyoruz
+            
             Vector2 look = input.LookInput * sensitivity * Time.deltaTime;
 
             xRotation -= look.y;
@@ -31,13 +31,5 @@ public class PlayerLook : MonoBehaviour
             cameraTransform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
             transform.Rotate(Vector3.up * look.x);
         
-
-        //Vector2 look = input.LookInput * sensitivity;
-
-        //xRotation -= look.y;
-        //xRotation = Mathf.Clamp(xRotation, -80f, 80f);
-
-        //cameraTransform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
-        //transform.Rotate(Vector3.up * look.x);
     }
 }

@@ -4,20 +4,50 @@ public class PlayerMovement : MonoBehaviour
 {
     private FPSInput input;
     private CharacterController controller;
+   
 
-    public float speed = 5f;
-    public float jumpForce = 2f;
+    [Header("Speed_Settings")]
+    public float walkSpeed = 5f;
+    private float sprintSpeed;
+    private float crouchSpeed;
+    private float currentSpeed;
+    public float acceleration = 10f;
+    private Vector3 currentVelocity;
     private Vector3 velocity;
+
+
+    public float jumpForce = 2f;
     private bool isGrounded;
 
-    public float acceleration = 10f; // Hýzlanma katsayýsý
-    private Vector3 currentVelocity; // Mevcut hýz vektörü
+   
     void Awake()
     {
         input = GetComponent<FPSInput>();
         controller = GetComponent<CharacterController>();
+        currentSpeed = walkSpeed;
+        crouchSpeed = walkSpeed * 0.5f;
+        sprintSpeed = walkSpeed * 2;
     }
 
+    private void Start()
+    {
+        input.SprintStarted += () => currentSpeed = sprintSpeed;
+        input.SprintCanceled += () => currentSpeed = walkSpeed;
+
+        input.CrouchStarted += StartCrouch;
+        input.CrouchCanceled += StopCrouch;
+    }
+    void StartCrouch()
+    {
+        controller.height = 1f; 
+        currentSpeed = crouchSpeed;      
+    }
+
+    void StopCrouch()
+    {
+        controller.height = 2f; 
+        currentSpeed = walkSpeed;
+    }
     void OnEnable()
     {
         input.JumpEvent += Jump;
@@ -35,15 +65,16 @@ public class PlayerMovement : MonoBehaviour
         Vector2 move = input.MoveInput;
         Vector3 targetDir = transform.right * move.x + transform.forward * move.y;
 
-        // Lerp kullanarak hýzý yumuþatýyoruz, bu CS'deki o akýþ hissini verir
-        currentVelocity = Vector3.Lerp(currentVelocity, targetDir * speed, acceleration * Time.deltaTime);
+        currentVelocity = Vector3.Lerp(currentVelocity, targetDir * currentSpeed, acceleration * Time.deltaTime);
 
         controller.Move(currentVelocity * Time.deltaTime);
 
-        // Yerçekimi
+       
         if (isGrounded && velocity.y < 0) velocity.y = -2f;
         velocity.y += Physics.gravity.y * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime);
+
+        
     }
 
     void Jump()
@@ -51,4 +82,6 @@ public class PlayerMovement : MonoBehaviour
         if (isGrounded)
             velocity.y = Mathf.Sqrt(jumpForce * -2f * Physics.gravity.y);
     }
+
+   
 }

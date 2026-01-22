@@ -3,6 +3,7 @@
 public class SoundManager : MonoBehaviour
 {
     AudioSource audioSource;
+
     public static SoundManager Instance { get; private set; }
     private void Awake()
     {
@@ -28,4 +29,6 @@ public class SoundManager : MonoBehaviour
         audioSource.Play();
 
     }
+
+    
 }
