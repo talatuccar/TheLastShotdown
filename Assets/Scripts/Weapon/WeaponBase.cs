@@ -55,8 +55,17 @@ public abstract class WeaponBase : MonoBehaviour
     
             Destroy(effect, 1.5f);
             Debug.Log("Vurulan: " + hit.transform.name);
+            BreakableBox box = hit.transform.GetComponent<BreakableBox>();
+            if (box != null)
+            {
+                box.TakeDamage(10); // Hasar veriyoruz
+            }
         }
 
         GetComponentInParent<WeaponManager>().ApplyRecoil();
+
+
     }
+
+
 }
