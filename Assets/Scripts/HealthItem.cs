@@ -1,19 +1,19 @@
+using System;
 using UnityEngine;
 
-public class HealthItem : BaseLoot, ICollectable
+public class HealthItem : BaseLoot
 {
-    public int amount = 25;
-
-    public void Collect()
+    //public Health_UI health_ui;
+    public static event Action<int> OnHealthChanged;
+    const int healthIncrease = 50;
+    int currentHealth;
+    protected override void Collect()
     {
-        Debug.Log(amount + " Can eklendi.");
+        base.Collect();
         
-        Destroy(gameObject);
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Player")) Collect();
+        currentHealth = PlayerInventory.Instance.AddHealth(healthIncrease);
+        OnHealthChanged?.Invoke(currentHealth);
+        
     }
 
 }

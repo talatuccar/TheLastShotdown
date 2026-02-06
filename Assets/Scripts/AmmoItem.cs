@@ -1,21 +1,19 @@
+using System;
 using UnityEngine;
 
-public class AmmoItem : BaseLoot, ICollectable
+public class AmmoItem : BaseLoot
 {
 
-    public int amount = 30;
-
-    public void Collect()
+    public static event Action<int> OnAmmoChanged;
+    const int ammoIncrease = 30;
+    int currentAmmo;
+    protected override void Collect()
     {
-        Debug.Log(amount + " Mermi eklendi.");
+        base.Collect();
+
+        currentAmmo = PlayerInventory.Instance.AddAmmo(ammoIncrease);
+        OnAmmoChanged?.Invoke(currentAmmo);
         
-        // PlayerInventory.Instance.AddAmmo(amount);
-        Destroy(gameObject);
     }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Player")) Collect();
-    }
-
+    
 }

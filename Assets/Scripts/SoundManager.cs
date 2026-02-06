@@ -4,6 +4,7 @@ public class SoundManager : MonoBehaviour
 {
     AudioSource audioSource;
 
+    public AudioClip lootTakenSfx;
     public static SoundManager Instance { get; private set; }
     private void Awake()
     {

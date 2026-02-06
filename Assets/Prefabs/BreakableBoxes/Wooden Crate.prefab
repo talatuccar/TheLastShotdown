@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 23000013730734082}
   - component: {fileID: -3971245189567925834}
   - component: {fileID: 8851670995652976928}
+  - component: {fileID: 7508267321835531147}
   m_Layer: 6
   m_Name: Wooden Crate
   m_TagString: Breakable
@@ -100,7 +101,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 911350c7ed9db3c4598a38a1cd72924c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  data: {fileID: 11400000, guid: 05138bf8ec9702c44b9edd88cb580eea, type: 2}
+  breakableData: {fileID: 11400000, guid: 05138bf8ec9702c44b9edd88cb580eea, type: 2}
 --- !u!54 &8851670995652976928
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -128,3 +129,24 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &7508267321835531147
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1000011275823026}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 121.772705, y: 102.35167, z: 101.00458}
+  m_Center: {x: 0.09588623, y: 51.056816, z: -0.0934124}

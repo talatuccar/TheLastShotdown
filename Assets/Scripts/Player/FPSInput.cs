@@ -23,7 +23,7 @@ public class FPSInput : MonoBehaviour
     public void OnMove(InputAction.CallbackContext context)
     {
         MoveInput = context.ReadValue<Vector2>();
-        Debug.Log(MoveInput);
+        
 
     }
 

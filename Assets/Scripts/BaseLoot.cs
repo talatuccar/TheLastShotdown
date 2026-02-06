@@ -1,11 +1,14 @@
-using UnityEngine;
 using DG.Tweening;
+using System;
+using UnityEngine;
 
 public abstract class BaseLoot : MonoBehaviour
 {
+
+    
     protected virtual void Start()
     {
-        // Tüm lootlar ortaklaþa döner ve süzülür
+
         transform.DORotate(new Vector3(0, 360, 0), 3f, RotateMode.FastBeyond360)
             .SetLoops(-1, LoopType.Incremental).SetEase(Ease.Linear);
 
@@ -15,7 +18,21 @@ public abstract class BaseLoot : MonoBehaviour
 
     protected virtual void OnDestroy()
     {
-        // Bu transform üzerindeki tüm DOTween iþlemlerini anýnda öldür.
         transform.DOKill();
+    }
+
+
+    public void OnTriggerEnter(Collider other)
+    {
+
+        if (other.CompareTag("Player"))
+        {
+            SoundManager.Instance.PlayAudioClip(SoundManager.Instance.lootTakenSfx);
+            Collect();
+        }
+    }
+    protected virtual void Collect()
+    {
+        Destroy(gameObject);
     }
 }

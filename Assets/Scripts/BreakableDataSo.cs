@@ -4,6 +4,6 @@ using UnityEngine;
 public class BreakableDataSo : ScriptableObject
 {
     public float maxHealth = 30f;
-    public GameObject brokenPrefab; // Kýrýlmýþ model
-    public GameObject[] lootPrefabs;   // Ýçinden çýkacak item
+    public GameObject brokenPrefab; 
+    public GameObject[] lootPrefabs;   
 }

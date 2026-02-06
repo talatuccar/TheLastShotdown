@@ -2,13 +2,13 @@ using UnityEngine;
 
 public class BreakableBox : MonoBehaviour
 {
-    public BreakableDataSo data; // Oluþturduðun SO'yu buraya sürükleyeceksin
+    public BreakableDataSo breakableData; 
     private float currentHealth;
-
+   
     void Start()
     {
-        if (data != null)
-            currentHealth = data.maxHealth;
+        if (breakableData != null)
+            currentHealth = breakableData.maxHealth;
     }
 
     public void TakeDamage(float amount)
@@ -23,20 +23,20 @@ public class BreakableBox : MonoBehaviour
     void Break()
     {
         // Kýrýlmýþ modeli oluþtur
-        if (data.brokenPrefab != null)
+        if (breakableData.brokenPrefab != null)
         {
-            GameObject broken = Instantiate(data.brokenPrefab, transform.position, transform.rotation);
-            // Parçalarýn biraz daðýlmasý için (Opsiyonel)
+            GameObject broken = Instantiate(breakableData.brokenPrefab, transform.position, transform.rotation);
+           
             Destroy(broken,5f);
         }
 
-        // Loot çýkart
+       
 
-        int random = Random.Range(0, data.lootPrefabs.Length);
-        if (data.lootPrefabs[random] != null)
+        int random = Random.Range(0, breakableData.lootPrefabs.Length);
+        if (breakableData.lootPrefabs[random] != null)
         {
 
-            Instantiate(data.lootPrefabs[random], transform.position + Vector3.up * 1f, Quaternion.identity);
+            Instantiate(breakableData.lootPrefabs[random], transform.position + Vector3.up * 1f, Quaternion.identity);
 
         }
         Destroy(gameObject);

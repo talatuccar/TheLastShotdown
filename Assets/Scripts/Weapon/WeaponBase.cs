@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public abstract class WeaponBase : MonoBehaviour
@@ -5,7 +6,9 @@ public abstract class WeaponBase : MonoBehaviour
     public WeaponDataSo weaponData;
     protected float nextFireTime;
 
-    public Transform muzzlePoint; 
+    public Transform muzzlePoint;
+
+    public static event Action OnShooted;
 
     private ParticleSystem muzzleFlashParticle;
 
@@ -35,8 +38,14 @@ public abstract class WeaponBase : MonoBehaviour
     }
     protected virtual void ExecuteShoot()
     {
+        if (PlayerInventory.Instance.playerInventoryDataSo.AmmoAmount <= 0)
+        {
+            Debug.Log("Mermi yok!");
+            return;
+        }
 
-        
+        OnShooted?.Invoke();
+
         if (muzzleFlashParticle != null)
         {
             muzzleFlashParticle.Play(); 
@@ -58,7 +67,7 @@ public abstract class WeaponBase : MonoBehaviour
             BreakableBox box = hit.transform.GetComponent<BreakableBox>();
             if (box != null)
             {
-                box.TakeDamage(10); // Hasar veriyoruz
+                box.TakeDamage(10); 
             }
         }
 
