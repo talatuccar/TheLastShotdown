@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class BreakableBox : MonoBehaviour
+public class BreakableBox : MonoBehaviour,IDamageable
 {
     public BreakableDataSo breakableData; 
     private float currentHealth;
@@ -11,7 +11,7 @@ public class BreakableBox : MonoBehaviour
             currentHealth = breakableData.maxHealth;
     }
 
-    public void TakeDamage(float amount)
+    public void TakeDamage(float amount,Vector3 hitPoint)
     {
         currentHealth -= amount;
         if (currentHealth <= 0)

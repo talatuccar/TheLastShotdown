@@ -14,9 +14,9 @@ TagManager:
   - Water
   - UI
   - Interact
-  - 
-  - 
-  - 
+  - Player
+  - NPC
+  - Walkable
   - 
   - 
   - 
