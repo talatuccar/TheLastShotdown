@@ -9,7 +9,8 @@ public class ChaseState : IState
 
     public void OnEnter()
     {
-        _enemy.agent.speed = _enemy.data.chaseSpeed;
+        
+        _enemy.agent.speed = _enemy.enemyData.chaseSpeed;
         Debug.Log("Seni gördüm! Geliyorum!");
     }
 
@@ -23,7 +24,7 @@ public class ChaseState : IState
             float distance = Vector3.Distance(_enemy.transform.position, _enemy.player.position);
 
            
-            if (distance <= _enemy.data.attackRange)
+            if (distance <= _enemy.enemyData.attackRange)
             {
                 _enemy.ChangeState(new AttackState(_enemy));
             }

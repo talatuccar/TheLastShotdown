@@ -7,7 +7,7 @@ using UnityEngine.AI;
 public class EnemyController : MonoBehaviour
 {
     [Header("Settings")]
-    public EnemyDataSo data;
+    public EnemyDataSo enemyData;
     public List<Transform> waypoints;
     public LayerMask playerLayer;
 
@@ -17,9 +17,20 @@ public class EnemyController : MonoBehaviour
 
     private StateMachineHandler _stateMachine;
     public Transform player;
+    public Transform muzzlePoint;
+    public  ParticleSystem muzzleFlashParticle;
 
+    public GameObject flashGo;
+
+    [Header("Password Settings")]
+    public bool carriesPasswordPart; 
+    public int passwordIndex;       
     void Start()
     {
+         flashGo = Instantiate(enemyData.muzzleFlashPrefab, muzzlePoint.position, muzzlePoint.rotation, muzzlePoint);
+
+
+        muzzleFlashParticle = flashGo.GetComponent<ParticleSystem>();
         _stateMachine = new StateMachineHandler();
         _stateMachine.AddState(new PatrolState(this));
         StartCoroutine(DetectionRoutine());
@@ -28,10 +39,12 @@ public class EnemyController : MonoBehaviour
     void Update()
     {
         _stateMachine.UpdateStates();
-        anim.SetFloat("Speed", agent.velocity.magnitude);
+
+        
+        float currentSpeed = agent.velocity.magnitude;
+        anim.SetFloat("Speed", currentSpeed > 0.1f ? currentSpeed : 0f);
     }
 
-  
     public void ChangeState(IState newState)
     {
         _stateMachine.AddState(newState);
@@ -55,9 +68,9 @@ public class EnemyController : MonoBehaviour
     private void DetectPlayer()
     {
        
-        if (data == null) return;
+        if (enemyData == null) return;
 
-        Collider[] hits = Physics.OverlapSphere(transform.position, data.detectionRadius, playerLayer);
+        Collider[] hits = Physics.OverlapSphere(transform.position, enemyData.detectionRadius, playerLayer);
         if (hits.Length > 0)
         {
             player = hits[0].transform;
@@ -65,6 +78,44 @@ public class EnemyController : MonoBehaviour
         else
         {
             player = null;
+        }
+    }
+
+   
+    public bool CanSeePlayer()
+    {
+        if (player == null) return false;
+
+        Vector3 directionToPlayer = (player.position - transform.position).normalized;
+        float distanceToPlayer = Vector3.Distance(transform.position, player.position);
+
+        
+        Vector3 eyePosition = transform.position + Vector3.up * 1.5f;
+
+        RaycastHit hit;
+        
+        if (Physics.Raycast(eyePosition, directionToPlayer, out hit, enemyData.detectionRadius))
+        {
+            
+            if (hit.transform.CompareTag("Player"))
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    
+    public void ShowPasswordDigit()
+    {
+
+        Debug.Log("EVENT ÇALIÞTI!");
+        if (carriesPasswordPart)
+        {
+            int digit = GameManager.Instance.passwordManager.GetPasswordPart(passwordIndex);
+
+            
+            GameManager.Instance.passwordManagerUI.ShowPasswordFragment(passwordIndex + 1, digit);
         }
     }
 }

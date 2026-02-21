@@ -120,6 +120,9 @@ GameObject:
   - component: {fileID: 858978354641080651}
   - component: {fileID: 1610082981869877442}
   - component: {fileID: 6295641975685903724}
+  - component: {fileID: 297353828415807291}
+  - component: {fileID: 1292179088711844208}
+  - component: {fileID: 8624748845966078187}
   m_Layer: 0
   m_Name: Cargo_container_v1_LD1through
   m_TagString: Untagged
@@ -214,8 +217,72 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 8.515611, y: 3, z: 3.6738224}
-  m_Center: {x: -0.60063696, y: -8.199279e-19, z: -0.034041405}
+  m_Size: {x: 8.35294, y: 2.3762422, z: 0.6790333}
+  m_Center: {x: -0.6819725, y: -0.31187895, z: -1.531436}
+--- !u!65 &297353828415807291
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 996781839665252258}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 7.91334, y: 2.4537327, z: 0.5710335}
+  m_Center: {x: -0.710099, y: -0.2731336, z: 1.355053}
+--- !u!65 &1292179088711844208
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 996781839665252258}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 7.847623, y: 1.0236235, z: 4.029503}
+  m_Center: {x: -0.86033535, y: 1.1381648, z: -0.13122392}
+--- !u!64 &8624748845966078187
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 996781839665252258}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300030, guid: 856f086268c2c1b4f8f1d4b9bc614217, type: 3}
 --- !u!1 &1031922416711659463
 GameObject:
   m_ObjectHideFlags: 0
@@ -443,7 +510,7 @@ GameObject:
   - component: {fileID: 6988345900062059360}
   m_Layer: 0
   m_Name: Cargo_container_v1
-  m_TagString: Untagged
+  m_TagString: Metal
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -456,7 +523,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2054306752428313065}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -19.9, y: 0, z: -24.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0

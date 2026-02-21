@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Damaging
   - Breakable
+  - Stone
+  - Metal
   layers:
   - Default
   - TransparentFX

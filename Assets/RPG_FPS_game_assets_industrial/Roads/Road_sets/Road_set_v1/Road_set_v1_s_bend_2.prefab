@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 33000013039774250}
   - component: {fileID: 23000011349794528}
   - component: {fileID: 64000013236190884}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Road_set_v1_s_bend_2
-  m_TagString: Untagged
+  m_TagString: Stone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647

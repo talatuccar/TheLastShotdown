@@ -5,7 +5,7 @@ namespace AI.FSM
 {
     public class StateMachineHandler
     {
-        // Durumlarý üst üste eklemek için Yýðýn (Stack) yapýsý
+       
         private Stack<IState> _stateStack = new Stack<IState>();
         public IState CurrentState => _stateStack.Count > 0 ? _stateStack.Peek() : null;
 

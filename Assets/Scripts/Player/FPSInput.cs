@@ -77,6 +77,7 @@ public class FPSInput : MonoBehaviour
 
 
         playerInput.actions["Jump"].performed += OnJump;
+        //PlayerStateManager.OnToggleControls += ToggleScript;
     }
 
     void OnDisable()
@@ -99,6 +100,12 @@ public class FPSInput : MonoBehaviour
 
         playerInput.actions["Crouch"].performed -= _ => CrouchStarted?.Invoke();
         playerInput.actions["Crouch"].canceled -= _ => CrouchCanceled?.Invoke();
+    //    PlayerStateManager.OnToggleControls -= ToggleScript;
 
+    //}
+    
+    //void ToggleScript(bool state)
+    //{
+    //    this.enabled = state; // Scripti tamamen kapatýr veya açar
     }
 }

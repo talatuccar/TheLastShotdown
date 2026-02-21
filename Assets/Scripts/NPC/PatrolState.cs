@@ -7,16 +7,16 @@ public class PatrolState : IState
 
     public void OnEnter()
     {
-        // Hata buradaydý: Veri artýk data.patrolSpeed içinde
-        _enemy.agent.speed = _enemy.data.patrolSpeed;
+      
+        _enemy.agent.speed = _enemy.enemyData.patrolSpeed; 
         SetDestination();
     }
 
     public void OnUpdate()
     {
 
-        _enemy.anim.SetFloat("Speed", _enemy.agent.velocity.magnitude);
-        // Oyuncu menzile girdiyse Takip durumuna geç
+       
+       
         if (_enemy.player != null)
         {
             _enemy.ChangeState(new ChaseState(_enemy));

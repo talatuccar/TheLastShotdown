@@ -14,12 +14,14 @@ public class WeaponManager : MonoBehaviour
     {
         input.OnAttackStarted += StartFiring;
         input.OnAttackCanceled += StopFiring;
+        //PlayerStateManager.OnToggleControls += ToggleScript;
     }
 
     void OnDisable()
     {
         input.OnAttackStarted -= StartFiring;
         input.OnAttackCanceled -= StopFiring;
+        //PlayerStateManager.OnToggleControls -= ToggleScript;
     }
 
     void StartFiring()
@@ -46,7 +48,13 @@ public class WeaponManager : MonoBehaviour
         transform.localRotation = Quaternion.Euler(currentRotation);
     }
 
-  
+   
+    
+
+    //void ToggleScript(bool state)
+    //{
+    //    this.enabled = state; 
+    //}
     public void ApplyRecoil()
     {
         targetRotation += new Vector3(-currentWeapon.weaponData.recoilX,

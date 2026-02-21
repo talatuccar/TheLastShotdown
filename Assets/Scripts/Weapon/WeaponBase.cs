@@ -29,7 +29,7 @@ public abstract class WeaponBase : MonoBehaviour
     }
     public void Fire()
     {
-        
+        //if (UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject()) return;
         if (Time.time >= nextFireTime)
         {
             ExecuteShoot();
@@ -57,7 +57,13 @@ public abstract class WeaponBase : MonoBehaviour
 
         
         Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
-        if (Physics.Raycast(ray, out RaycastHit hit, weaponData.range))
+
+        // Player layer'ýný al
+        int playerLayer = LayerMask.NameToLayer("Player");
+
+        // Player hariç her þeyi kapsayan bir maske oluþtur (Bitwise NOT operatörü ~ ile)
+        int layerMask = ~(1 << playerLayer);
+        if (Physics.Raycast(ray, out RaycastHit hit, weaponData.range, layerMask))
         {
             Debug.Log("Vurulan: " + hit.transform.name);
 
@@ -67,7 +73,7 @@ public abstract class WeaponBase : MonoBehaviour
             if (hitTarget != null)
             {
                 //TDO Buradaki '10' yerine weaponData.damage (eðer SO'da varsa) kullan
-                hitTarget.TakeDamage(10,hit.point);
+                hitTarget.TakeDamage(weaponData.damage,hit.point);
             }
 
             
@@ -80,14 +86,23 @@ public abstract class WeaponBase : MonoBehaviour
     // Görsel efektleri (toz, kan, kývýlcým) yöneten metod
     private void HandleHitVisuals(RaycastHit hit)
     {
-        GameObject effectToSpawn = weaponData.hitEffectPrefab;
+        GameObject effectToSpawn = null;
 
        
         if (hit.transform.gameObject.layer == LayerMask.NameToLayer("NPC"))
         {
            
-            Debug.Log("<color=red>NPC Vuruldu! Kan çýkýyor...</color>");
+            Debug.Log("NPC Vuruldu! Kan çýkýyor");
             
+        }
+
+        if (hit.transform.CompareTag("Metal"))
+        {
+            effectToSpawn = weaponData.metalHitEffectPrefab; // SO'ya bunu eklemelisin
+        }
+        else if (hit.transform.CompareTag("Stone"))
+        {
+            effectToSpawn = weaponData.stoneHitEffectPrefab; // SO'ya bunu eklemelisin
         }
 
         if (effectToSpawn != null)

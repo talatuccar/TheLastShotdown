@@ -7,4 +7,7 @@ public class EnemyDataSo : ScriptableObject
     public float chaseSpeed = 5f;
     public float detectionRadius = 10f;
     public float attackRange = 5f;
+
+    public GameObject muzzleFlashPrefab;
+   
 }

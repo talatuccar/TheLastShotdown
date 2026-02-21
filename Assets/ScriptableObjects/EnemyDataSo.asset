@@ -16,3 +16,4 @@ MonoBehaviour:
   chaseSpeed: 5
   detectionRadius: 45
   attackRange: 20
+  muzzleFlashPrefab: {fileID: 1000010254994808, guid: 9defeac88977c0d448aa4541073ee9e4, type: 3}
