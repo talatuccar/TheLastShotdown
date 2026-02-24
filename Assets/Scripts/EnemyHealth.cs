@@ -19,16 +19,14 @@ public class EnemyHealth : MonoBehaviour, IDamageable
         _enemy = GetComponent<EnemyController>();
     }
 
-    // WeaponBase'deki Raycast bu metodu çaðýracak
-    // EnemyHealth.cs içinde
-    public void TakeDamage(float amount, Vector3 hitPoint)
+
+    public void ProcessHit(float amount, bool isHeadshot, Vector3 hitPoint)
     {
         if (_isDead) return;
 
         _currentHealth -= amount;
 
-        // --- ÝÞTE BURASI! ---
-        // Efekti düþmanýn merkezinde deðil, merminin vurduðu noktada oluþtur.
+        // Efekt oluþturma
         if (bloodEffectPrefab != null)
         {
             Instantiate(bloodEffectPrefab, hitPoint, Quaternion.identity);
@@ -36,31 +34,75 @@ public class EnemyHealth : MonoBehaviour, IDamageable
 
         if (_currentHealth <= 0)
         {
-            Die();
+            Die(isHeadshot);
         }
     }
 
-    private void SpawnBloodEffect()
+    // IDamageable'dan gelen zorunlu metod (Genel vuruþlar için)
+    public void TakeDamage(float amount, Vector3 hitPoint)
     {
-        if (bloodEffectPrefab != null)
-        {
-            // Kaný karakterin biraz yukarýsýnda (gövde hizasý) oluþtur
-            Instantiate(bloodEffectPrefab, transform.position + Vector3.up * 1.2f, Quaternion.identity);
-        }
+        ProcessHit(amount, false, hitPoint);
     }
 
-    private void Die()
+    private void Die(bool headshot)
     {
         if (_isDead) return;
         _isDead = true;
 
-        Debug.Log("<color=black>NPC Öldü!</color>");
+        Debug.Log(headshot ? "<color=red>HEADSHOT!</color>" : "<color=black>NPC Öldü!</color>");
 
-        // State Machine'i Ölüm durumuna geçiriyoruz
-        // Bu sayede hareket durur, animasyon oynar, beyin kapanýr.
-        _enemy.ChangeState(new DeathState(_enemy));
+        // State Machine'e ölüm tipini gönderiyoruz
+        DeathType type = headshot ? DeathType.Headshot : DeathType.General;
+        _enemy.ChangeState(new DeathState(_enemy, type));
 
-        // Cesedi 5 saniye sonra sahneden temizle
+        // Þifre parçasýný gösteren metodu tetikle
+        _enemy.ShowPasswordDigit();
+
         Destroy(gameObject, 5f);
     }
+
+
+
+
+
+
+
+
+
+
+
+    //public void TakeDamage(float amount, Vector3 hitPoint)
+    //{
+    //    if (_isDead) return;
+
+    //    _currentHealth -= amount;
+
+      
+    //    if (bloodEffectPrefab != null)
+    //    {
+    //        Instantiate(bloodEffectPrefab, hitPoint, Quaternion.identity);
+    //    }
+
+    //    if (_currentHealth <= 0)
+    //    {
+    //        Die();
+    //    }
+    //}
+
+   
+
+    //private void Die()
+    //{
+    //    if (_isDead) return;
+    //    _isDead = true;
+
+    //    Debug.Log("<color=black>NPC Öldü!</color>");
+
+    //    // State Machine'i Ölüm durumuna geçiriyoruz
+    //    // Bu sayede hareket durur, animasyon oynar, beyin kapanýr.
+    //    _enemy.ChangeState(new DeathState(_enemy));
+
+    //    // Cesedi 5 saniye sonra sahneden temizle
+    //    Destroy(gameObject, 5f);
+    //}
 }
