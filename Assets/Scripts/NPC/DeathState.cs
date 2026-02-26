@@ -6,9 +6,9 @@ namespace AI.FSM
     public class DeathState : IState
     {
         private EnemyController _enemy;
-        private DeathType _deathType; // Ölüm tipini tutan deðiþken
+        private DeathType _deathType; 
 
-        // Constructor'ý ölüm tipini alacak þekilde güncelledik
+        
         public DeathState(EnemyController enemy, DeathType deathType = DeathType.General)
         {
             _enemy = enemy;

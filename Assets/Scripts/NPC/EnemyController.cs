@@ -8,26 +8,34 @@ public class EnemyController : MonoBehaviour
 {
     [Header("Settings")]
     public EnemyDataSo enemyData;
-    public List<Transform> waypoints;
+    //public List<Transform> waypoints;
+    public List<GameObject> waypoints;
     public LayerMask playerLayer;
-
+    public LevelDataSo levelDataSo;
     [Header("Components")]
     public NavMeshAgent agent;
     public Animator anim;
 
     private StateMachineHandler _stateMachine;
-    public Transform player;
+    //public Transform player;
+    private Transform player;
+    public Transform Player => player;
     public Transform muzzlePoint;
-    public  ParticleSystem muzzleFlashParticle;
+    public ParticleSystem muzzleFlashParticle;
 
     public GameObject flashGo;
 
     [Header("Password Settings")]
-    public bool carriesPasswordPart; 
-    public int passwordIndex;       
+    public bool carriesPasswordPart;
+    public int passwordIndex;
+    private void Awake()
+    {
+        //player = GameObject.FindGameObjectWithTag("Player").transform;
+        waypoints = levelDataSo.roadPoints;
+    }
     void Start()
     {
-         flashGo = Instantiate(enemyData.muzzleFlashPrefab, muzzlePoint.position, muzzlePoint.rotation, muzzlePoint);
+        flashGo = Instantiate(enemyData.muzzleFlashPrefab, muzzlePoint.position, muzzlePoint.rotation, muzzlePoint);
 
 
         muzzleFlashParticle = flashGo.GetComponent<ParticleSystem>();
@@ -40,7 +48,7 @@ public class EnemyController : MonoBehaviour
     {
         _stateMachine.UpdateStates();
 
-        
+
         float currentSpeed = agent.velocity.magnitude;
         anim.SetFloat("Speed", currentSpeed > 0.1f ? currentSpeed : 0f);
     }
@@ -50,7 +58,7 @@ public class EnemyController : MonoBehaviour
         _stateMachine.AddState(newState);
     }
 
-    
+
     public void GoBackToPreviousState()
     {
         _stateMachine.RemoveState();
@@ -61,13 +69,13 @@ public class EnemyController : MonoBehaviour
         while (true)
         {
             DetectPlayer();
-            yield return new WaitForSeconds(0.2f);
+            yield return new WaitForSeconds(0.05f);
         }
     }
 
     private void DetectPlayer()
     {
-       
+
         if (enemyData == null) return;
 
         Collider[] hits = Physics.OverlapSphere(transform.position, enemyData.detectionRadius, playerLayer);
@@ -81,7 +89,7 @@ public class EnemyController : MonoBehaviour
         }
     }
 
-   
+
     public bool CanSeePlayer()
     {
         if (player == null) return false;
@@ -89,14 +97,14 @@ public class EnemyController : MonoBehaviour
         Vector3 directionToPlayer = (player.position - transform.position).normalized;
         float distanceToPlayer = Vector3.Distance(transform.position, player.position);
 
-        
+
         Vector3 eyePosition = transform.position + Vector3.up * 1.5f;
 
         RaycastHit hit;
-        
+
         if (Physics.Raycast(eyePosition, directionToPlayer, out hit, enemyData.detectionRadius))
         {
-            
+
             if (hit.transform.CompareTag("Player"))
             {
                 return true;
@@ -105,7 +113,7 @@ public class EnemyController : MonoBehaviour
         return false;
     }
 
-    
+
     public void ShowPasswordDigit()
     {
 
@@ -114,8 +122,39 @@ public class EnemyController : MonoBehaviour
         {
             int digit = GameManager.Instance.passwordManager.GetPasswordPart(passwordIndex);
 
-            
+
             GameManager.Instance.passwordManagerUI.ShowPasswordFragment(passwordIndex + 1, digit);
+        }
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        if (enemyData == null) return;
+
+        // Görüþ menzilini çiz
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, enemyData.detectionRadius);
+
+        // Eðer oyuncuyu algýladýysa bir çizgi çek
+        if (player != null)
+        {
+            Gizmos.color = Color.green;
+            Gizmos.DrawLine(transform.position + Vector3.up * 1.5f, player.position);
+        }
+
+
+    }
+
+    private void OnDestroy()
+    {
+        if (_stateMachine != null)
+        {
+            _stateMachine = null;
+        }
+        StopAllCoroutines();
+        if (agent != null && agent.isActiveAndEnabled)
+        {
+            agent.isStopped = true;
         }
     }
 }

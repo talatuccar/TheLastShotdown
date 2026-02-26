@@ -6,9 +6,9 @@ using UnityEngine;
 public class AttackState : IState
 {
     private EnemyController _enemy;
-    private float _fireRate = 1.2f;
+    private float _fireRate = 0.9f;
     private float _nextFireTime;
-   
+    public WeaponDataSo weaponData;
     public static Action<float> OnPlayerShooted;
     public AttackState(EnemyController enemy) => _enemy = enemy;
 
@@ -22,7 +22,7 @@ public class AttackState : IState
 
     public void OnUpdate()
     {
-        if (_enemy.player == null)
+        if (_enemy.Player == null)
         {
             _enemy.GoBackToPreviousState();
             return;
@@ -47,7 +47,7 @@ public class AttackState : IState
         }
 
        
-        float distance = Vector3.Distance(_enemy.transform.position, _enemy.player.position);
+        float distance = Vector3.Distance(_enemy.transform.position, _enemy.Player.position);
         if (distance > _enemy.enemyData.attackRange + 1.5f)
         {
             _enemy.GoBackToPreviousState();
@@ -58,7 +58,7 @@ public class AttackState : IState
     
     private void LookAtPlayer()
     {
-        Vector3 direction = (_enemy.player.position - _enemy.transform.position).normalized;
+        Vector3 direction = (_enemy.Player.position - _enemy.transform.position).normalized;
         direction.y = 0; 
 
         if (direction != Vector3.zero)
@@ -76,6 +76,7 @@ public class AttackState : IState
         
             
         }
+        SoundManager.Instance.PlayAudioClip(_enemy.enemyData.enemyfireSound);
         int randomHealthDecrease = UnityEngine.Random.Range(0, 10);
         PlayerInventory.Instance.DecreaseHealth(randomHealthDecrease);
     }

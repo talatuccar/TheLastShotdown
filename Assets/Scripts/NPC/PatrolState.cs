@@ -1,3 +1,5 @@
+using UnityEngine;
+
 public class PatrolState : IState
 {
     private EnemyController _enemy;
@@ -8,7 +10,11 @@ public class PatrolState : IState
     public void OnEnter()
     {
       
-        _enemy.agent.speed = _enemy.enemyData.patrolSpeed; 
+        _enemy.agent.speed = _enemy.enemyData.patrolSpeed;
+        if (_enemy.waypoints.Count > 0)
+        {
+            _currentWaypointIndex = Random.Range(0, _enemy.waypoints.Count);
+        }
         SetDestination();
     }
 
@@ -17,7 +23,7 @@ public class PatrolState : IState
 
        
        
-        if (_enemy.player != null)
+        if (_enemy.Player != null)
         {
             _enemy.ChangeState(new ChaseState(_enemy));
             return;
@@ -30,6 +36,20 @@ public class PatrolState : IState
         }
     }
 
-    private void SetDestination() => _enemy.agent.SetDestination(_enemy.waypoints[_currentWaypointIndex].position);
+    private void SetDestination() 
+    {
+        int newIndex = _currentWaypointIndex;
+
+        
+        while (newIndex == _currentWaypointIndex)
+        {
+            newIndex = Random.Range(0, _enemy.waypoints.Count);
+        }
+
+        _currentWaypointIndex = newIndex;
+        _enemy.agent.SetDestination(_enemy.waypoints[_currentWaypointIndex].transform.position);
+
+
+    } 
     public void OnExit() { }
 }

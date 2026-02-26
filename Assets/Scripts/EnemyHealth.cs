@@ -9,7 +9,7 @@ public class EnemyHealth : MonoBehaviour, IDamageable
     private bool _isDead = false;
 
     [Header("Visuals & Effects")]
-    public GameObject bloodEffectPrefab; // Vurulduðunda çýkacak kan
+    public GameObject bloodEffectPrefab; 
 
     private EnemyController _enemy;
 
@@ -38,7 +38,7 @@ public class EnemyHealth : MonoBehaviour, IDamageable
         }
     }
 
-    // IDamageable'dan gelen zorunlu metod (Genel vuruþlar için)
+  
     public void TakeDamage(float amount, Vector3 hitPoint)
     {
         ProcessHit(amount, false, hitPoint);
@@ -51,11 +51,9 @@ public class EnemyHealth : MonoBehaviour, IDamageable
 
         Debug.Log(headshot ? "<color=red>HEADSHOT!</color>" : "<color=black>NPC Öldü!</color>");
 
-        // State Machine'e ölüm tipini gönderiyoruz
         DeathType type = headshot ? DeathType.Headshot : DeathType.General;
         _enemy.ChangeState(new DeathState(_enemy, type));
 
-        // Þifre parçasýný gösteren metodu tetikle
         _enemy.ShowPasswordDigit();
 
         Destroy(gameObject, 5f);

@@ -9,5 +9,5 @@ public class EnemyDataSo : ScriptableObject
     public float attackRange = 5f;
 
     public GameObject muzzleFlashPrefab;
-   
+    public AudioClip enemyfireSound;
 }

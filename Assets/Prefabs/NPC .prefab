@@ -781,17 +781,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyData: {fileID: 11400000, guid: 2b93199ad5444e540b156968c9d844e3, type: 2}
-  waypoints:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  waypoints: []
   playerLayer:
     serializedVersion: 2
     m_Bits: 128
+  levelDataSo: {fileID: 11400000, guid: d88091136e3aa9f40bd202d37bf32ebb, type: 2}
   agent: {fileID: 1001283467965665440}
   anim: {fileID: 8523846814087533181}
-  player: {fileID: 0}
   muzzlePoint: {fileID: 1666221751376970958}
   muzzleFlashParticle: {fileID: 0}
   flashGo: {fileID: 0}
