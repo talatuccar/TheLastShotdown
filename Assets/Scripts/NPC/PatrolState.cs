@@ -21,13 +21,14 @@ public class PatrolState : IState
     public void OnUpdate()
     {
 
-       
-       
+
+
         if (_enemy.Player != null)
         {
             _enemy.ChangeState(new ChaseState(_enemy));
             return;
         }
+
 
         if (!_enemy.agent.pathPending && _enemy.agent.remainingDistance < 0.5f)
         {

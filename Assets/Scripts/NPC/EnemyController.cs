@@ -8,7 +8,7 @@ public class EnemyController : MonoBehaviour
 {
     [Header("Settings")]
     public EnemyDataSo enemyData;
-    //public List<Transform> waypoints;
+
     public List<GameObject> waypoints;
     public LayerMask playerLayer;
     public LevelDataSo levelDataSo;
@@ -17,7 +17,7 @@ public class EnemyController : MonoBehaviour
     public Animator anim;
 
     private StateMachineHandler _stateMachine;
-    //public Transform player;
+
     private Transform player;
     public Transform Player => player;
     public Transform muzzlePoint;
@@ -28,6 +28,8 @@ public class EnemyController : MonoBehaviour
     [Header("Password Settings")]
     public bool carriesPasswordPart;
     public int passwordIndex;
+
+
     private void Awake()
     {
         //player = GameObject.FindGameObjectWithTag("Player").transform;
@@ -44,15 +46,21 @@ public class EnemyController : MonoBehaviour
         StartCoroutine(DetectionRoutine());
     }
 
+
     void Update()
     {
+
+        if (_stateMachine == null) return;
+
         _stateMachine.UpdateStates();
 
 
-        float currentSpeed = agent.velocity.magnitude;
-        anim.SetFloat("Speed", currentSpeed > 0.1f ? currentSpeed : 0f);
+        if (agent != null && agent.enabled)
+        {
+            float currentSpeed = agent.velocity.magnitude;
+            anim.SetFloat("Speed", currentSpeed > 0.1f ? currentSpeed : 0f);
+        }
     }
-
     public void ChangeState(IState newState)
     {
         _stateMachine.AddState(newState);
@@ -117,7 +125,7 @@ public class EnemyController : MonoBehaviour
     public void ShowPasswordDigit()
     {
 
-        Debug.Log("EVENT ÇALIÞTI!");
+
         if (carriesPasswordPart)
         {
             int digit = GameManager.Instance.passwordManager.GetPasswordPart(passwordIndex);
@@ -143,6 +151,19 @@ public class EnemyController : MonoBehaviour
         }
 
 
+    }
+
+    public void Shoot()
+    {
+        if (muzzleFlashParticle != null && CanSeePlayer())
+        {
+            muzzleFlashParticle.Play();
+            SoundManager.Instance.PlayAudioClip(enemyData.enemyfireSound);
+            int randomHealthDecrease = UnityEngine.Random.Range(0, 10);
+            PlayerInventory.Instance.DecreaseHealth(randomHealthDecrease);
+
+        }
+        
     }
 
     private void OnDestroy()

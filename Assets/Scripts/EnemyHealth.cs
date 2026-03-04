@@ -9,10 +9,13 @@ public class EnemyHealth : MonoBehaviour, IDamageable
     private bool _isDead = false;
 
     [Header("Visuals & Effects")]
-    public GameObject bloodEffectPrefab; 
+    public GameObject bloodEffectPrefab;
 
     private EnemyController _enemy;
+    private float _nextHitReactionTime;
+    [SerializeField] private float hitReactionCooldown = 2f; // 1 saniyede en fazla 1 kez irkilsin
 
+   
     private void Awake()
     {
         _currentHealth = maxHealth;
@@ -26,19 +29,42 @@ public class EnemyHealth : MonoBehaviour, IDamageable
 
         _currentHealth -= amount;
 
-        // Efekt oluþturma
+
         if (bloodEffectPrefab != null)
         {
-            Instantiate(bloodEffectPrefab, hitPoint, Quaternion.identity);
+            GameObject bloodPrefab = Instantiate(bloodEffectPrefab, hitPoint, Quaternion.identity);
+            Destroy(bloodPrefab,3);
         }
 
         if (_currentHealth <= 0)
         {
             Die(isHeadshot);
         }
+
+
+        if (_currentHealth >= 40f && _currentHealth <= 70f)
+        {
+            PlayHitReaction();
+        }
     }
 
-  
+    private void PlayHitReaction()
+    {
+        if (Time.time < _nextHitReactionTime) return;
+        if (_enemy.anim == null) return;
+
+
+
+        if (_enemy.agent.velocity.magnitude > 0.5f)
+        {
+            _enemy.anim.SetTrigger("Hit_Running");
+        }
+        else
+        {
+            _enemy.anim.SetTrigger("Hit_Idle");
+        }
+        _nextHitReactionTime = Time.time + hitReactionCooldown;
+    }
     public void TakeDamage(float amount, Vector3 hitPoint)
     {
         ProcessHit(amount, false, hitPoint);
@@ -49,58 +75,28 @@ public class EnemyHealth : MonoBehaviour, IDamageable
         if (_isDead) return;
         _isDead = true;
 
-        Debug.Log(headshot ? "<color=red>HEADSHOT!</color>" : "<color=black>NPC Öldü!</color>");
 
-        DeathType type = headshot ? DeathType.Headshot : DeathType.General;
+        DeathType type;
+
+        if (headshot)
+        {
+            type = DeathType.Headshot;
+        }
+
+        else if (_enemy.agent.velocity.magnitude > 0.5f)
+        {
+            type = DeathType.ChaseDeath;
+        }
+        else
+        {
+            type = DeathType.General;
+        }
+
         _enemy.ChangeState(new DeathState(_enemy, type));
 
         _enemy.ShowPasswordDigit();
 
         Destroy(gameObject, 5f);
     }
-
-
-
-
-
-
-
-
-
-
-
-    //public void TakeDamage(float amount, Vector3 hitPoint)
-    //{
-    //    if (_isDead) return;
-
-    //    _currentHealth -= amount;
-
-      
-    //    if (bloodEffectPrefab != null)
-    //    {
-    //        Instantiate(bloodEffectPrefab, hitPoint, Quaternion.identity);
-    //    }
-
-    //    if (_currentHealth <= 0)
-    //    {
-    //        Die();
-    //    }
-    //}
-
-   
-
-    //private void Die()
-    //{
-    //    if (_isDead) return;
-    //    _isDead = true;
-
-    //    Debug.Log("<color=black>NPC Öldü!</color>");
-
-    //    // State Machine'i Ölüm durumuna geçiriyoruz
-    //    // Bu sayede hareket durur, animasyon oynar, beyin kapanýr.
-    //    _enemy.ChangeState(new DeathState(_enemy));
-
-    //    // Cesedi 5 saniye sonra sahneden temizle
-    //    Destroy(gameObject, 5f);
-    //}
+    
 }

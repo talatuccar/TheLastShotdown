@@ -15,6 +15,6 @@ MonoBehaviour:
   patrolSpeed: 2
   chaseSpeed: 5
   detectionRadius: 45
-  attackRange: 20
+  attackRange: 10
   muzzleFlashPrefab: {fileID: 1000010254994808, guid: 9defeac88977c0d448aa4541073ee9e4, type: 3}
   enemyfireSound: {fileID: 8300000, guid: e02f7c66d2f028e48800701487da891b, type: 3}

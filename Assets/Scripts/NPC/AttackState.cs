@@ -28,25 +28,19 @@ public class AttackState : IState
             return;
         }
 
-     
         LookAtPlayer();
 
-        if (_enemy.CanSeePlayer())
+        // Sadece ateş etme zamanı geldiğinde ateş et
+        if (Time.time >= _nextFireTime)
         {
-            if (Time.time >= _nextFireTime)
-            {
-                Shoot();
-                _nextFireTime = Time.time + _fireRate;
-            }
+            // Eğer CanSeePlayer kontrolü yapmak istersen buraya ekleyebilirsin
+            _enemy.Shoot();
+            _nextFireTime = Time.time + _fireRate;
         }
-        else
-        {
-            
-            _enemy.GoBackToPreviousState();
-            return;
-        }
+        // BURADAKİ ELSE BLOĞUNU SİLDİK! 
+        // Ateş edemediği sürede (bekleme süresinde) State'te kalmaya devam etmeli.
 
-       
+        // Sadece mesafe çok açılırsa State'ten çık
         float distance = Vector3.Distance(_enemy.transform.position, _enemy.Player.position);
         if (distance > _enemy.enemyData.attackRange + 1.5f)
         {
@@ -55,11 +49,10 @@ public class AttackState : IState
         }
     }
 
-    
     private void LookAtPlayer()
     {
         Vector3 direction = (_enemy.Player.position - _enemy.transform.position).normalized;
-        direction.y = 0; 
+        direction.y = 0;
 
         if (direction != Vector3.zero)
         {
@@ -68,18 +61,18 @@ public class AttackState : IState
         }
     }
 
-    private void Shoot()
-    {
-        if (_enemy.muzzleFlashParticle != null)
-        {
-            _enemy.muzzleFlashParticle.Play();  
-        
-            
-        }
-        SoundManager.Instance.PlayAudioClip(_enemy.enemyData.enemyfireSound);
-        int randomHealthDecrease = UnityEngine.Random.Range(0, 10);
-        PlayerInventory.Instance.DecreaseHealth(randomHealthDecrease);
-    }
+    //private void Shoot()
+    //{
+    //    if (_enemy.muzzleFlashParticle != null)
+    //    {
+    //        _enemy.muzzleFlashParticle.Play();  
+
+
+    //    }
+    //    SoundManager.Instance.PlayAudioClip(_enemy.enemyData.enemyfireSound);
+    //    int randomHealthDecrease = UnityEngine.Random.Range(0, 10);
+    //    PlayerInventory.Instance.DecreaseHealth(randomHealthDecrease);
+    //}
 
     public void OnExit()
     {
