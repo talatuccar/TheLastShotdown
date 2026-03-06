@@ -139,11 +139,11 @@ public class EnemyController : MonoBehaviour
     {
         if (enemyData == null) return;
 
-        // Görüþ menzilini çiz
+        
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, enemyData.detectionRadius);
 
-        // Eðer oyuncuyu algýladýysa bir çizgi çek
+        
         if (player != null)
         {
             Gizmos.color = Color.green;

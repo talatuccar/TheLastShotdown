@@ -42,7 +42,7 @@ public class EnemyHealth : MonoBehaviour, IDamageable
         }
 
 
-        if (_currentHealth >= 40f && _currentHealth <= 70f)
+        if (_currentHealth >= 20f && _currentHealth <= 80f)
         {
             PlayHitReaction();
         }
