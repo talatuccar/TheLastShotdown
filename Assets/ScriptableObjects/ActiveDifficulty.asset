@@ -1,15 +1,3 @@
-%YAML 1.1
-%TAG !u! tag:unity3d.com,2011:
---- !u!114 &11400000
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dffaa2157cc30554e828e5409b5d8b6f, type: 3}
-  m_Name: ActiveDifficulty
-  m_EditorClassIdentifier: 
-  currentDifficulty: {fileID: 11400000, guid: 966976db8d9983141b4a125ab7739218, type: 2}
+version https://git-lfs.github.com/spec/v1
+oid sha256:4b7bb6df236465b6ad80a9d0bcb550dd028c9dbb2d2be1cf035bba62c7c779bd
+size 494

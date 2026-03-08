@@ -1,20 +1,3 @@
-%YAML 1.1
-%TAG !u! tag:unity3d.com,2011:
---- !u!114 &11400000
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2e72abdf22dc13d4ea3ce4a3a63726da, type: 3}
-  m_Name: EnemyDataSo
-  m_EditorClassIdentifier: 
-  patrolSpeed: 2
-  chaseSpeed: 5
-  detectionRadius: 45
-  attackRange: 10
-  muzzleFlashPrefab: {fileID: 1000010254994808, guid: 9defeac88977c0d448aa4541073ee9e4, type: 3}
-  enemyfireSound: {fileID: 8300000, guid: e02f7c66d2f028e48800701487da891b, type: 3}
+version https://git-lfs.github.com/spec/v1
+oid sha256:193d567f5e5df2e7e94153d6dae3aeeefa0b3cd5779948fc6acbc6e2da1bf5ab
+size 655
