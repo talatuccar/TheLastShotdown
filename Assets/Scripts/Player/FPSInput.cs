@@ -7,6 +7,11 @@ public class FPSInput : MonoBehaviour
     public Vector2 MoveInput { get; private set; }
     public Vector2 LookInput { get; private set; }
 
+    public event Action OnAimStarted;
+    public event Action OnAimCanceled;
+
+    public event Action OnAlpha1Pressed;
+    public event Action OnAlpha2Pressed;
 
     public event Action OnAttackStarted;
     public event Action OnAttackCanceled;
@@ -57,13 +62,17 @@ public class FPSInput : MonoBehaviour
     void OnEnable()
     {
         var playerInput = GetComponent<PlayerInput>();
-       
 
-        
+        playerInput.actions["Aim"].performed += _ => OnAimStarted?.Invoke();
+        playerInput.actions["Aim"].canceled += _ => OnAimCanceled?.Invoke();
+
+
         playerInput.actions["Sprint"].performed += _ => SprintStarted?.Invoke();
         playerInput.actions["Sprint"].canceled += _ => SprintCanceled?.Invoke();
 
-        
+        playerInput.actions["Alpha1"].performed += _ => OnAlpha1Pressed?.Invoke();
+        playerInput.actions["Alpha2"].performed += _ => OnAlpha2Pressed?.Invoke();
+
         playerInput.actions["Crouch"].performed += _ => CrouchStarted?.Invoke();
         playerInput.actions["Crouch"].canceled += _ => CrouchCanceled?.Invoke();
         playerInput.actions["Move"].performed += OnMove;
@@ -91,8 +100,12 @@ public class FPSInput : MonoBehaviour
 
         playerInput.actions["Attack"].performed -= _ => OnAttackStarted?.Invoke();
         playerInput.actions["Attack"].canceled -= _ => OnAttackCanceled?.Invoke();
+        playerInput.actions["Aim"].performed -= _ => OnAimStarted?.Invoke();
+        playerInput.actions["Aim"].canceled -= _ => OnAimCanceled?.Invoke();
 
 
+        playerInput.actions["Alpha1"].performed -= _ => OnAlpha1Pressed?.Invoke();
+        playerInput.actions["Alpha2"].performed -= _ => OnAlpha2Pressed?.Invoke();
         playerInput.actions["Jump"].performed -= OnJump;
 
         playerInput.actions["Sprint"].performed -= _ => SprintStarted?.Invoke();
