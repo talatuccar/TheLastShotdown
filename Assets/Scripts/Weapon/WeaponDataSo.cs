@@ -10,6 +10,8 @@ public class WeaponDataSo : ScriptableObject
     public float range;
     
     public GameObject muzzleFlashPrefab;
+ 
+
     public GameObject metalHitEffectPrefab;
     public GameObject stoneHitEffectPrefab;
 
@@ -18,5 +20,12 @@ public class WeaponDataSo : ScriptableObject
     public float recoilY = 0.5f; 
     public float snappiness = 10f; 
     public float returnSpeed = 5f; 
-    public AudioClip fireSound;  
+    public AudioClip fireSound;
+
+
+    [Header("Sniper Settings")]
+    public bool isSniper;
+    public float zoomFOV = 20f;
+    public float zoomSpeed = 12f;
+    public float adsSensitivityMultiplier = 0.4f;
 }

@@ -58,10 +58,10 @@ public abstract class WeaponBase : MonoBehaviour
         
         Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
 
-        // Player layer'ýný al
+        
         int playerLayer = LayerMask.NameToLayer("Player");
 
-        // Player hariç her þeyi kapsayan bir maske oluþtur (Bitwise NOT operatörü ~ ile)
+        // Player hariç her þeyi kapsayan bir maske Bitwise NOT operatörü ~ 
         int layerMask = ~(1 << playerLayer);
         if (Physics.Raycast(ray, out RaycastHit hit, weaponData.range, layerMask))
         {
@@ -72,7 +72,6 @@ public abstract class WeaponBase : MonoBehaviour
 
             if (hitTarget != null)
             {
-                //TDO Buradaki '10' yerine weaponData.damage (eðer SO'da varsa) kullan
                 hitTarget.TakeDamage(weaponData.damage,hit.point);
             }
 
@@ -83,7 +82,7 @@ public abstract class WeaponBase : MonoBehaviour
         GetComponentInParent<WeaponManager>().ApplyRecoil();
     }
 
-    // Görsel efektleri (toz, kan, kývýlcým) yöneten metod
+    
     private void HandleHitVisuals(RaycastHit hit)
     {
         GameObject effectToSpawn = null;
@@ -98,11 +97,11 @@ public abstract class WeaponBase : MonoBehaviour
 
         if (hit.transform.CompareTag("Metal"))
         {
-            effectToSpawn = weaponData.metalHitEffectPrefab; // SO'ya bunu eklemelisin
+            effectToSpawn = weaponData.metalHitEffectPrefab; 
         }
         else if (hit.transform.CompareTag("Stone"))
         {
-            effectToSpawn = weaponData.stoneHitEffectPrefab; // SO'ya bunu eklemelisin
+            effectToSpawn = weaponData.stoneHitEffectPrefab; 
         }
 
         if (effectToSpawn != null)
