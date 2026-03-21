@@ -1,13 +1,13 @@
 using UnityEngine;
-
+using System.Collections;
 public class WeaponManager : MonoBehaviour
 {
 
     private FPSInput input;
 
     [Header("Weapon Settings")]
-    public WeaponBase currentWeapon; // O an elimizde olan silah
-    public WeaponBase[] allWeapons; // 0: AK47, 1: Sniper (Inspector'dan sürükle)
+    public WeaponBase currentWeapon; 
+    public WeaponBase[] allWeapons; 
     private int selectedWeaponIndex = 0;
     private bool isFiring = false;
 
@@ -15,6 +15,9 @@ public class WeaponManager : MonoBehaviour
     private Vector3 currentRotation;
     private Vector3 targetRotation;
 
+    public Animator weaponHolder;
+    private bool isSwitching = false;
+    private int pendingWeaponIndex; 
     void Awake()
     {
         input = GetComponentInParent<FPSInput>();
@@ -22,7 +25,7 @@ public class WeaponManager : MonoBehaviour
 
     void Start()
     {
-        // Oyun baþladýðýnda ilk silahý (genelde AK47) seçelim
+       
         if (allWeapons.Length > 0)
         {
             SelectWeapon(0);
@@ -31,11 +34,11 @@ public class WeaponManager : MonoBehaviour
 
     void OnEnable()
     {
-        // Ateþ etme eventleri
+      
         input.OnAttackStarted += StartFiring;
         input.OnAttackCanceled += StopFiring;
 
-        // Silah deðiþtirme eventleri (1 ve 2 tuþlarý)
+     
         input.OnAlpha1Pressed += () => SelectWeapon(0);
         input.OnAlpha2Pressed += () => SelectWeapon(1);
     }
@@ -49,17 +52,12 @@ public class WeaponManager : MonoBehaviour
         input.OnAlpha2Pressed -= () => SelectWeapon(1);
     }
 
-    void StartFiring()
-    {
-        isFiring = true;
-        if (currentWeapon != null) currentWeapon.Fire();
-    }
 
     void StopFiring() => isFiring = false;
 
     void Update()
     {
-        // 1. Seri Ateþ Kontrolü
+      
         if (isFiring && currentWeapon != null)
         {
             currentWeapon.Fire();
@@ -73,45 +71,59 @@ public class WeaponManager : MonoBehaviour
             // Mevcut rotasyonu hedefe sarsýntýlý bir þekilde ulaþtýr (Snappiness)
             currentRotation = Vector3.Slerp(currentRotation, targetRotation, currentWeapon.weaponData.snappiness * Time.deltaTime);
 
-            // Sadece bu objenin (CurrentWeapons hiyerarþisi) rotasyonunu deðiþtir
+            
             transform.localRotation = Quaternion.Euler(currentRotation);
         }
     }
 
     public void SelectWeapon(int index)
     {
-        // Geçersiz index kontrolü
-        if (index < 0 || index >= allWeapons.Length) return;
+        if (index < 0 || index >= allWeapons.Length || isSwitching) return;
+        if (currentWeapon == allWeapons[index] && allWeapons[index].gameObject.activeSelf) return;
 
-        // Silah deðiþtirirken ateþ etmeyi durdur
+        pendingWeaponIndex = index; 
+        isSwitching = true;
         StopFiring();
 
+        weaponHolder.SetTrigger("ChangeWeapon"); 
+    }
+
+    // animasyonun ortasýnda eklenen event methodu
+    public void ExecuteWeaponSwitch()
+    {
+        
         for (int i = 0; i < allWeapons.Length; i++)
         {
-            bool shouldBeActive = (i == index);
+            bool shouldBeActive = (i == pendingWeaponIndex);
 
-            // KRÝTÝK: Sniper'dan baþka silaha geçiyorsak zoom'u kapatmalýyýz
             if (!shouldBeActive && allWeapons[i] is Sniper sniper)
-            {
-                // Sniper scriptini devre dýþý býrakmak zoom'u ve UI'ý resetleyecektir
-                // (Eðer Sniper içindeki OnDisable metodu ResetScope çaðýrýyorsa)
                 allWeapons[i].enabled = false;
-            }
 
-            // Objeyi aç veya kapat
             allWeapons[i].gameObject.SetActive(shouldBeActive);
 
             if (shouldBeActive)
             {
-                allWeapons[i].enabled = true; // Silahý tekrar aktif et
+                allWeapons[i].enabled = true;
                 currentWeapon = allWeapons[i];
                 selectedWeaponIndex = i;
-
-                // Yeni silaha geçtiðimizde eski geri tepme kalýntýlarýný temizleyelim
                 targetRotation = Vector3.zero;
                 currentRotation = Vector3.zero;
             }
         }
+    }
+
+    //  animasyonun bittiði event 
+    public void FinishWeaponSwitch()
+    {
+        isSwitching = false;
+    }
+
+
+    void StartFiring()
+    {
+        if (isSwitching) return; // Silah deðiþirken ateþ etme
+        isFiring = true;
+        if (currentWeapon != null) currentWeapon.Fire();
     }
 
     public void ApplyRecoil()
@@ -124,70 +136,4 @@ public class WeaponManager : MonoBehaviour
             Random.Range(-currentWeapon.weaponData.recoilY, currentWeapon.weaponData.recoilY));
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-    //private FPSInput input;
-    //public WeaponBase currentWeapon;
-    //private bool isFiring = false;
-    //[Header("Recoil Settings")]
-    //private Vector3 currentRotation;
-    //private Vector3 targetRotation;
-    //void Awake() => input = GetComponentInParent<FPSInput>();
-
-    //void OnEnable()
-    //{
-    //    input.OnAttackStarted += StartFiring;
-    //    input.OnAttackCanceled += StopFiring;
-
-    //}
-
-    //void OnDisable()
-    //{
-    //    input.OnAttackStarted -= StartFiring;
-    //    input.OnAttackCanceled -= StopFiring;
-
-    //}
-
-    //void StartFiring()
-    //{
-    //    isFiring = true;
-    //    if (currentWeapon != null) currentWeapon.Fire(); 
-    //}
-
-    //void StopFiring() => isFiring = false;
-
-    //void Update()
-    //{
-    //    if (isFiring && currentWeapon != null)
-    //    {
-    //        currentWeapon.Fire(); 
-    //    }
-
-
-    //    targetRotation = Vector3.Lerp(targetRotation, Vector3.zero, currentWeapon.weaponData.returnSpeed * Time.deltaTime);
-
-    //    currentRotation = Vector3.Slerp(currentRotation, targetRotation, currentWeapon.weaponData.snappiness * Time.deltaTime);
-
-
-    //    transform.localRotation = Quaternion.Euler(currentRotation);
-    //}
-
-
-
-    //public void ApplyRecoil()
-    //{
-    //    targetRotation += new Vector3(-currentWeapon.weaponData.recoilX,
-    //        Random.Range(-currentWeapon.weaponData.recoilY, currentWeapon.weaponData.recoilY),
-    //        Random.Range(-currentWeapon.weaponData.recoilY, currentWeapon.weaponData.recoilY));
-    //}
 }

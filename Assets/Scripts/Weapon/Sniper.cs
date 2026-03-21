@@ -3,7 +3,8 @@ using System.Collections;
 
 public class Sniper : WeaponBase
 {
-    [SerializeField] private GameObject scopeUI; 
+    [SerializeField] private GameObject scopeUI;
+    [SerializeField] private GameObject croosHair;
     private bool isAiming = false;
     private float defaultFOV;
     private Camera mainCam;
@@ -57,11 +58,13 @@ public class Sniper : WeaponBase
         if (isAiming && mainCam.fieldOfView <= weaponData.zoomFOV + 1f)
         {
             if (scopeUI != null) scopeUI.SetActive(true);
+            croosHair.SetActive(false);
             ShowWeaponModel(false); 
         }
         else
         {
             if (scopeUI != null) scopeUI.SetActive(false);
+            croosHair.SetActive(true);
             ShowWeaponModel(true); 
         }
     }

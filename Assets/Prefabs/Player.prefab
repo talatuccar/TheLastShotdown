@@ -234,7 +234,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de0e84b90d9e3ca498d9e30a0343cb82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentWeapon: {fileID: 6993610646289746872}
+  currentWeapon: {fileID: 0}
+  allWeapons: []
+  weaponHolder: {fileID: 0}
 --- !u!1 &5303875645656998063
 GameObject:
   m_ObjectHideFlags: 0
@@ -701,7 +703,8 @@ PrefabInstance:
       propertyPath: m_ReceiveShadows
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 9500000, guid: d7e93aca4be6fd040ac3037ca5304922, type: 3}
     m_RemovedGameObjects:
     - {fileID: 100018, guid: d7e93aca4be6fd040ac3037ca5304922, type: 3}
     m_AddedGameObjects:
@@ -712,9 +715,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 100010, guid: d7e93aca4be6fd040ac3037ca5304922, type: 3}
       insertIndex: -1
       addedObject: {fileID: 8723930304092026454}
-    - targetCorrespondingSourceObject: {fileID: 100010, guid: d7e93aca4be6fd040ac3037ca5304922, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 6993610646289746872}
   m_SourcePrefab: {fileID: 100100000, guid: d7e93aca4be6fd040ac3037ca5304922, type: 3}
 --- !u!1 &403363673465226300 stripped
 GameObject:
@@ -738,20 +738,6 @@ MonoBehaviour:
   smoothAmount: 3
   walkBobSpeed: 12
   walkBobAmount: 0.03
---- !u!114 &6993610646289746872
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 403363673465226300}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 950d1664707dd1e4293a54e753b0bb0c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  weaponData: {fileID: 11400000, guid: 6869abc1e4245ef429118c227f889da4, type: 2}
-  muzzlePoint: {fileID: 7203672080591217179}
 --- !u!4 &403363673465591836 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400010, guid: d7e93aca4be6fd040ac3037ca5304922, type: 3}
