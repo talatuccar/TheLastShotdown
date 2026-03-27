@@ -12,8 +12,7 @@ public class WeaponDataSo : ScriptableObject
     public GameObject muzzleFlashPrefab;
  
 
-    public GameObject metalHitEffectPrefab;
-    public GameObject stoneHitEffectPrefab;
+  
 
     [Header("Weapon_Shoot_Animation_Settings")]
     public float recoilX = 2f; 

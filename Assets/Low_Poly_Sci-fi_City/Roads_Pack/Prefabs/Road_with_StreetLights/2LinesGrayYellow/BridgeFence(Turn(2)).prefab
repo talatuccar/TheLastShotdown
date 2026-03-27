@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 8645309546757449209}
   - component: {fileID: 5773254579379867955}
   - component: {fileID: 6582073063094919853}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: BridgeFence(Turn(2))
-  m_TagString: Untagged
+  m_TagString: Stone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -26,7 +26,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5412838584094437606}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -36,7 +37,6 @@ Transform:
   - {fileID: 8916084379576886193}
   - {fileID: 828107687646120118}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &8645309546757449209
 MeshFilter:
@@ -63,6 +63,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -96,9 +99,17 @@ MeshCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5412838584094437606}
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
   m_IsTrigger: 0
+  m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 4
+  serializedVersion: 5
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 5341820177814066928, guid: ac64516973482d24bbc2fa65c86600aa, type: 3}
@@ -107,6 +118,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 4635774871287786076}
     m_Modifications:
     - target: {fileID: 111258420783597971, guid: 1166b39da2afb404796b5a886f5a7372, type: 3}
@@ -157,7 +169,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: StreetLight (11)
       objectReference: {fileID: 0}
+    - target: {fileID: 774782263658517289, guid: 1166b39da2afb404796b5a886f5a7372, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 3759906527340163187, guid: 1166b39da2afb404796b5a886f5a7372, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1166b39da2afb404796b5a886f5a7372, type: 3}
 --- !u!4 &828107687646120118 stripped
 Transform:
@@ -169,6 +192,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 4635774871287786076}
     m_Modifications:
     - target: {fileID: 111258420783597971, guid: 1166b39da2afb404796b5a886f5a7372, type: 3}
@@ -219,7 +243,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: StreetLight (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 774782263658517289, guid: 1166b39da2afb404796b5a886f5a7372, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 3759906527340163187, guid: 1166b39da2afb404796b5a886f5a7372, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1166b39da2afb404796b5a886f5a7372, type: 3}
 --- !u!4 &1828812010692638741 stripped
 Transform:
@@ -231,6 +266,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 4635774871287786076}
     m_Modifications:
     - target: {fileID: 111258420783597971, guid: 1166b39da2afb404796b5a886f5a7372, type: 3}
@@ -281,7 +317,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: StreetLight (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 774782263658517289, guid: 1166b39da2afb404796b5a886f5a7372, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 3759906527340163187, guid: 1166b39da2afb404796b5a886f5a7372, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1166b39da2afb404796b5a886f5a7372, type: 3}
 --- !u!4 &8642336691908463157 stripped
 Transform:
@@ -293,6 +340,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 4635774871287786076}
     m_Modifications:
     - target: {fileID: 111258420783597971, guid: 1166b39da2afb404796b5a886f5a7372, type: 3}
@@ -343,7 +391,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: StreetLight (10)
       objectReference: {fileID: 0}
+    - target: {fileID: 774782263658517289, guid: 1166b39da2afb404796b5a886f5a7372, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 3759906527340163187, guid: 1166b39da2afb404796b5a886f5a7372, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1166b39da2afb404796b5a886f5a7372, type: 3}
 --- !u!4 &8916084379576886193 stripped
 Transform:

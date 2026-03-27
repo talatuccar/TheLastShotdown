@@ -85,9 +85,9 @@ public abstract class WeaponBase : MonoBehaviour
     
     private void HandleHitVisuals(RaycastHit hit)
     {
-        GameObject effectToSpawn = null;
+        //GameObject effectToSpawn = null;
 
-       
+        string poolTag = "";
         if (hit.transform.gameObject.layer == LayerMask.NameToLayer("NPC"))
         {
            
@@ -97,18 +97,27 @@ public abstract class WeaponBase : MonoBehaviour
 
         if (hit.transform.CompareTag("Metal"))
         {
-            effectToSpawn = weaponData.metalHitEffectPrefab; 
+            //effectToSpawn = weaponData.metalHitEffectPrefab; 
+            poolTag = "MetalHit"; // Metal vuruþ efekti etiketi
         }
         else if (hit.transform.CompareTag("Stone"))
         {
-            effectToSpawn = weaponData.stoneHitEffectPrefab; 
+            poolTag = "StoneHit"; // Taþ vuruþ efekti etiketi
         }
 
-        if (effectToSpawn != null)
+        //if (effectToSpawn != null)
+        //{
+        //    Quaternion rotation = Quaternion.LookRotation(hit.normal);
+        //    GameObject effect = Instantiate(effectToSpawn, hit.point + (hit.normal * 0.01f), rotation);
+        //    Destroy(effect, 1.5f);
+        //}
+        if (!string.IsNullOrEmpty(poolTag))
         {
+            // Normal vektörü kullanarak mermi izinin yüzeye doðru bakmasýný saðla
             Quaternion rotation = Quaternion.LookRotation(hit.normal);
-            GameObject effect = Instantiate(effectToSpawn, hit.point + (hit.normal * 0.01f), rotation);
-            Destroy(effect, 1.5f);
+
+            // hit.normal * 0.01f ekleyerek yüzeyle çakýþmasýný (Z-fighting) engelliyoruz
+            EffectPooler.Instance.SpawnFromPool(poolTag, hit.point + (hit.normal * 0.01f), rotation);
         }
     }
 

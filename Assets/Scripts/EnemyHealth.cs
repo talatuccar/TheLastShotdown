@@ -8,12 +8,12 @@ public class EnemyHealth : MonoBehaviour, IDamageable
     private float _currentHealth;
     private bool _isDead = false;
 
-    [Header("Visuals & Effects")]
-    public GameObject bloodEffectPrefab;
+    //[Header("Visuals & Effects")]
+    //public GameObject bloodEffectPrefab;
 
     private EnemyController _enemy;
     private float _nextHitReactionTime;
-    [SerializeField] private float hitReactionCooldown = 2f; // 1 saniyede en fazla 1 kez irkilsin
+    [SerializeField] private float hitReactionCooldown = 2f; 
 
    
     private void Awake()
@@ -29,12 +29,8 @@ public class EnemyHealth : MonoBehaviour, IDamageable
 
         _currentHealth -= amount;
 
-
-        if (bloodEffectPrefab != null)
-        {
-            GameObject bloodPrefab = Instantiate(bloodEffectPrefab, hitPoint, Quaternion.identity);
-            Destroy(bloodPrefab,3);
-        }
+        EffectPooler.Instance.SpawnFromPool("Blood", hitPoint, Quaternion.identity);
+       
 
         if (_currentHealth <= 0)
         {
@@ -53,16 +49,16 @@ public class EnemyHealth : MonoBehaviour, IDamageable
         if (Time.time < _nextHitReactionTime) return;
         if (_enemy.anim == null) return;
 
+        _enemy.anim.SetTrigger("Hit_Idle");
 
-
-        if (_enemy.agent.velocity.magnitude > 0.5f)
-        {
-            _enemy.anim.SetTrigger("Hit_Running");
-        }
-        else
-        {
-            _enemy.anim.SetTrigger("Hit_Idle");
-        }
+        //if (_enemy.agent.velocity.magnitude > 0.5f)
+        //{
+        //    _enemy.anim.SetTrigger("Hit_Running");
+        //}
+        //else
+        //{
+        //    _enemy.anim.SetTrigger("Hit_Idle");
+        //}
         _nextHitReactionTime = Time.time + hitReactionCooldown;
     }
     public void TakeDamage(float amount, Vector3 hitPoint)

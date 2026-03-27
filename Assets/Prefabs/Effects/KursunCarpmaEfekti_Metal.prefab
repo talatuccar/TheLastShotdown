@@ -4793,6 +4793,7 @@ GameObject:
   - component: {fileID: 164018631642825103}
   - component: {fileID: 6315902984151621301}
   - component: {fileID: 4174281933053896774}
+  - component: {fileID: 1373870068837829683}
   m_Layer: 0
   m_Name: KursunCarpmaEfekti_Metal
   m_TagString: Untagged
@@ -9472,3 +9473,17 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &1373870068837829683
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4044122539871706256}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a717527a970bba948a1d9579e272583c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  poolTag: MetalHit
+  lifetime: 2
