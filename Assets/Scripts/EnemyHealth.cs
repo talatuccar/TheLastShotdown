@@ -49,16 +49,21 @@ public class EnemyHealth : MonoBehaviour, IDamageable
         if (Time.time < _nextHitReactionTime) return;
         if (_enemy.anim == null) return;
 
-        _enemy.anim.SetTrigger("Hit_Idle");
 
-        //if (_enemy.agent.velocity.magnitude > 0.5f)
-        //{
-        //    _enemy.anim.SetTrigger("Hit_Running");
-        //}
-        //else
-        //{
-        //    _enemy.anim.SetTrigger("Hit_Idle");
-        //}
+
+        if (_enemy.agent.velocity.magnitude >= 1)
+        {
+            _enemy.anim.SetTrigger("Hit");
+        }
+        else
+        {
+            _enemy.anim.SetTrigger("Hit_Idle");
+        }
+
+
+
+
+
         _nextHitReactionTime = Time.time + hitReactionCooldown;
     }
     public void TakeDamage(float amount, Vector3 hitPoint)
