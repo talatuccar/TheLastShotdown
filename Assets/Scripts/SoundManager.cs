@@ -2,7 +2,9 @@
 
 public class SoundManager : MonoBehaviour
 {
-    AudioSource audioSource;
+    private AudioSource audioSource;
+
+    public AudioSource AudioSource => audioSource;
 
     public AudioClip lootTakenSfx;
     public static SoundManager Instance { get; private set; }

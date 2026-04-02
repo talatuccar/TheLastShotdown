@@ -22,9 +22,12 @@ public class FPSInput : MonoBehaviour
     public event Action JumpEvent;
     public event Action SprintStarted;
     public event Action SprintCanceled;
-    
-    public event Action InteractEvent;
 
+    public event Action InteractEvent;
+    //public event Action<float> OnInteractProgress; // 0 ile 1 arasý deðer döner
+    public event Action OnInteractStarted;
+    public event Action OnInteractCanceled;
+    public bool IsInteracting { get; private set; }
     public void OnMove(InputAction.CallbackContext context)
     {
         MoveInput = context.ReadValue<Vector2>();
@@ -51,14 +54,31 @@ public class FPSInput : MonoBehaviour
             SprintCanceled?.Invoke();
     }
 
-   
+
 
     public void OnInteract(InputAction.CallbackContext context)
     {
-        if (context.performed)
-            InteractEvent?.Invoke();
-    }
+        // Tuþa ilk basýldýðý an
+        if (context.started)
+        {
+            IsInteracting = true;
+            OnInteractStarted?.Invoke();
+        }
 
+        // Tuþ býrakýldýðý an
+        if (context.canceled)
+        {
+            IsInteracting = false;
+            OnInteractCanceled?.Invoke();
+        }
+
+        // Eðer Input Action içindeki "Hold"u silmediysen:
+        if (context.performed)
+        {
+            // Bu sadece Hold süresi dolunca tetiklenir
+            InteractEvent?.Invoke();
+        }
+    }
     void OnEnable()
     {
         var playerInput = GetComponent<PlayerInput>();
@@ -86,6 +106,10 @@ public class FPSInput : MonoBehaviour
 
 
         playerInput.actions["Jump"].performed += OnJump;
+
+        playerInput.actions["Interact"].started += OnInteract;
+        playerInput.actions["Interact"].performed += OnInteract;
+        playerInput.actions["Interact"].canceled += OnInteract;
         //PlayerStateManager.OnToggleControls += ToggleScript;
     }
 
@@ -113,12 +137,17 @@ public class FPSInput : MonoBehaviour
 
         playerInput.actions["Crouch"].performed -= _ => CrouchStarted?.Invoke();
         playerInput.actions["Crouch"].canceled -= _ => CrouchCanceled?.Invoke();
-    //    PlayerStateManager.OnToggleControls -= ToggleScript;
 
-    //}
-    
-    //void ToggleScript(bool state)
-    //{
-    //    this.enabled = state; // Scripti tamamen kapatýr veya açar
+
+        playerInput.actions["Interact"].started -= OnInteract;
+        playerInput.actions["Interact"].performed -= OnInteract;
+        playerInput.actions["Interact"].canceled -= OnInteract;
+        //    PlayerStateManager.OnToggleControls -= ToggleScript;
+
+        //}
+
+        //void ToggleScript(bool state)
+        //{
+        //    this.enabled = state; // Scripti tamamen kapatýr veya açar
     }
 }
