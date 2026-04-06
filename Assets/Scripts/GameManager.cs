@@ -50,6 +50,9 @@ public class GameManager : MonoBehaviour
         //    spawnManager.SpawnEnemies(DifficultyManager.ChosenDifficulty.spawnedEnemyCount);
         //}
 
-        spawnManager.SpawnEnemies(activeDifficulty.currentDifficulty.spawnedEnemyCount);
+        //spawnManager.SpawnEnemies(activeDifficulty.currentDifficulty.spawnedEnemyCount);
+
+        spawnManager.SpawnEnemies(PlayerPrefs.GetInt("dif"));
+       
     }
 }
