@@ -304,9 +304,7 @@ MonoBehaviour:
   fakeLoadingSpeed: 0.5
   progressCircle: {fileID: 1111372933}
   percentText: {fileID: 1795336731}
-  menuInfoDataSo:
-  - {fileID: 11400000, guid: 0c60a02a143e78e46a5fe48ef7c8a30c, type: 2}
-  - {fileID: 11400000, guid: 5056f99e6f41bfa4d9d24aede9968b55, type: 2}
+  menuInfoDataSo: {fileID: 11400000, guid: bd45bcd738ae2214dbd9cacdac943289, type: 2}
   infoPanel: {fileID: 574993492}
 --- !u!4 &885573316
 Transform:

@@ -17,7 +17,7 @@ public class AsyncLoader : MonoBehaviour
     //public Sprite[] infoSprites;
     //public Image infoImage;
 
-    public MenuInfoDataSo[] menuInfoDataSo;
+    public MenuInfoDataSo menuInfoDataSo;
     public GameObject infoPanel;
     //public ActiveDifficultySO activeDifficulty;
     //void Start()
@@ -82,9 +82,10 @@ public class AsyncLoader : MonoBehaviour
 
     void SetInfoData()
     {
-        int random = Random.Range(0, menuInfoDataSo.Length);
-        infoPanel.transform.GetChild(0).GetComponent<Image>().sprite = menuInfoDataSo[random].menuIcon;
-        infoPanel.GetComponentInChildren<TextMeshProUGUI>().text = menuInfoDataSo[random].menuDescription;
+        int randomIndex = Random.Range(0, menuInfoDataSo.menuInfoDatas.Length);
+        var selectedData = menuInfoDataSo.menuInfoDatas[randomIndex];
+        infoPanel.transform.GetChild(0).GetComponent<Image>().sprite = selectedData.menuIcon;
+        infoPanel.GetComponentInChildren<TextMeshProUGUI>().text = selectedData.menuDescription;
 
     }
 
