@@ -211,7 +211,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   storyTextTab: {fileID: 985670753}
   maskArea: {fileID: 1596071979}
-  flowSpeed: 1.5
+  flowSpeed: 1
   textEndCloseOffset: 250
 --- !u!1 &127841726
 GameObject:
