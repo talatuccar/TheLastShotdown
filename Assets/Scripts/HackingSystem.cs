@@ -5,13 +5,13 @@ using UnityEngine.UI;
 public class HackingSystem : MonoBehaviour
 {
     [SerializeField] private Image progressCircle;
-    [SerializeField] private float hackDuration = 2.0f; // 2 saniyede dolsun
-    [SerializeField] private GameObject scrollingScreen; // Ýkinci Canvas/RawImage
+    [SerializeField] private float hackDuration = 2.0f;
+    [SerializeField] private GameObject scrollingScreen; 
     private float _currentTimer = 0f;
     private FPSInput _input;
     private bool _isCompleted = false;
     [SerializeField] private AudioClip matrixSFX;
-
+    [SerializeField] private GameObject winTabPanel;
     void Awake() => _input = FindFirstObjectByType<FPSInput>();
 
     void Update()
@@ -31,34 +31,29 @@ public class HackingSystem : MonoBehaviour
                 _isCompleted = true;
                 FinishHack();
             }
+            ScrollScreenActivate(true);  
         }
         else
         {
             _currentTimer = 0f;
             progressCircle.fillAmount = 0f;
+            ScrollScreenActivate(false);
         }
+    }
+
+    void ScrollScreenActivate(bool isActive)
+    {
+        if (scrollingScreen != null)
+        {
+            scrollingScreen.SetActive(isActive);
+        }
+
     }
     void FinishHack()
     {
-        Debug.Log("Hacking Bitti!");
-
-        // Bar Canvas'ýný kapat, Kayan Ekraný aç
+          
         if (progressCircle != null) progressCircle.transform.parent.gameObject.SetActive(false);
 
-        if (scrollingScreen != null)
-        {
-            scrollingScreen.SetActive(true);
-        }
-
-        StartCoroutine(PlaySFXMatrix());    
-    }
-
-    IEnumerator PlaySFXMatrix()
-    {
-
-        yield return new WaitForSeconds(2f);
-        SoundManager.Instance.AudioSource.loop = true;
-        SoundManager.Instance.PlayAudioClip(matrixSFX);
-       
-    }
+        GameManager.Instance.CompleteLevel(winTabPanel, matrixSFX);
+    }  
 }

@@ -57,7 +57,7 @@ public class WeaponManager : MonoBehaviour
 
     void Update()
     {
-      
+        
         if (isFiring && currentWeapon != null)
         {
             currentWeapon.Fire();

@@ -29,6 +29,7 @@ public abstract class WeaponBase : MonoBehaviour
     }
     public void Fire()
     {
+        if (Time.timeScale == 0) return;
         //if (UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject()) return;
         if (Time.time >= nextFireTime)
         {
