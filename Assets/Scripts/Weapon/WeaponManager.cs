@@ -1,5 +1,6 @@
-using UnityEngine;
 using System.Collections;
+using UnityEngine;
+using UnityEngine.UI;
 public class WeaponManager : MonoBehaviour
 {
 
@@ -8,7 +9,6 @@ public class WeaponManager : MonoBehaviour
     [Header("Weapon Settings")]
     public WeaponBase currentWeapon; 
     public WeaponBase[] allWeapons; 
-    private int selectedWeaponIndex = 0;
     private bool isFiring = false;
 
     [Header("Recoil Settings")]
@@ -17,7 +17,8 @@ public class WeaponManager : MonoBehaviour
 
     public Animator weaponHolder;
     private bool isSwitching = false;
-    private int pendingWeaponIndex; 
+    private int pendingWeaponIndex;
+    public Outline[] weaponUIOutlines;
     void Awake()
     {
         input = GetComponentInParent<FPSInput>();
@@ -91,21 +92,29 @@ public class WeaponManager : MonoBehaviour
     // animasyonun ortasýnda eklenen event methodu
     public void ExecuteWeaponSwitch()
     {
-        
         for (int i = 0; i < allWeapons.Length; i++)
         {
             bool shouldBeActive = (i == pendingWeaponIndex);
 
-            if (!shouldBeActive && allWeapons[i] is Sniper sniper)
-                allWeapons[i].enabled = false;
+          
+            if (weaponUIOutlines != null && i < weaponUIOutlines.Length)
+            {
+                
+                weaponUIOutlines[i].enabled = shouldBeActive;
 
+               
+                Color tempColor = weaponUIOutlines[i].GetComponent<Image>().color;
+                tempColor.a = shouldBeActive ? 1f : 0.8f;
+                weaponUIOutlines[i].GetComponent<Image>().color = tempColor;
+            }
+
+         
             allWeapons[i].gameObject.SetActive(shouldBeActive);
 
             if (shouldBeActive)
             {
                 allWeapons[i].enabled = true;
                 currentWeapon = allWeapons[i];
-                selectedWeaponIndex = i;
                 targetRotation = Vector3.zero;
                 currentRotation = Vector3.zero;
             }
