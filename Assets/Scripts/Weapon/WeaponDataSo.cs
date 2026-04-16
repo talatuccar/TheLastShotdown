@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 [CreateAssetMenu(fileName = "NewGun", menuName = "FPS/GunData")]
 public class WeaponDataSo : ScriptableObject
@@ -10,7 +11,7 @@ public class WeaponDataSo : ScriptableObject
     public float range;
     
     public GameObject muzzleFlashPrefab;
- 
+    public Image gunSwitchedFrameUI;
 
   
 
