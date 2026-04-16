@@ -534,19 +534,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 271070955}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 80633503}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &271070955
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -758,8 +746,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1584.1565, y: 685.58057}
+  m_AnchoredPosition: {x: 3.2735, y: 0}
+  m_SizeDelta: {x: 1682.3577, y: 1039.1042}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &419991977
 MonoBehaviour:
@@ -1650,8 +1638,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 12.5849, y: -682}
-  m_SizeDelta: {x: -67.1198, y: 443.5216}
+  m_AnchoredPosition: {x: 0, y: -891}
+  m_SizeDelta: {x: 0, y: 434.4567}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &985670754
 MonoBehaviour:
@@ -1673,25 +1661,25 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "GAME STORY: Artificial intelligence has gone out of control. They've taken
-    over defense, security, and production systems. Humanity has been excluded by
-    the systems it created. These artificial intelligences are constantly updating
-    themselves, correcting their mistakes, and becoming more powerful. All these
-    updates are managed from a single point. Outside the city, there's an industrial
-    facility that looks abandoned. But this facility is actually the central software
-    server for the artificial intelligences and the distribution point for updates
-    and control algorithms, and as long as the facility is running, the artificial
-    intelligences will continue to learn. Humanity will not be able to return. You
-    are a former facility security operator. You know this building. You know how
-    the systems work, and you know this: There is only one manual shutdown button
-    in this facility. The artificial intelligences cannot touch this button because
-    it is a forbidden access in their software. \n\nPURPOSE:  The artificial intelligences
-    are attacking you. To them, you are an unidentified threat. You have access to
-    the shutdown button. They have to stop this. They've marked you as a\r\n\"priority
-    target\". Enter the facility, bypass the AI \u200B\u200Bprotections, reach the
-    Energy\r\nCentral Control Room, and shut down the Central Software Update System
-    with a single\r\nbutton. When this button is pressed, the AIs will not receive
-    updates. The systems\r\nstop. The facility goes silent. The AI \u200B\u200Bnetwork
+  m_text: " GAME STORY\n\n Artificial intelligence has gone out of control. They've
+    \n\ntaken over defense, security, and production systems. \n\nHumanity has been
+    excluded by the systems it created. \n\nThese artificial intelligences are constantly
+    updating \n\nthemselves, correcting their mistakes, and becoming more  powerful.
+    All these updates are managed from a single point. Outside the city, there's
+    an industrial facility that looks abandoned. But this facility is actually the
+    central software server for the artificial intelligences and the distribution
+    point for updates and control algorithms, and as long as the facility is running,
+    the artificial intelligences will continue to learn. Humanity will not be able
+    to return. You are a former facility security operator. You know this building.
+    You know how the systems work, and you know this: There is only one manual shutdown
+    button in this facility. The artificial intelligences cannot touch this button
+    because it is a forbidden access in their software. \n\n PURPOSE\n\nThe artificial
+    intelligences are attacking you. To them, you are an unidentified threat. You
+    have access to the shutdown button. They have to stop this. They've marked you
+    as a \"priority target\". Enter the facility, bypass the AI \u200B\u200Bprotections,
+    reach the Energy Central Control Room, and shut down the Central Software Update
+    System with a single button. When this button is pressed, the AIs will not receive
+    updates. The systems stop. The facility goes silent. The AI \u200B\u200Bnetwork
     collapses."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1719,7 +1707,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 23.4
+  m_fontSize: 35.15
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1757,7 +1745,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: -3.0467834, y: 0, z: -4.1988525, w: -934.7164}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -2582,8 +2570,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -0, y: 0}
-  m_SizeDelta: {x: 1036.0786, y: 455.554}
+  m_AnchoredPosition: {x: 15.4286, y: 0}
+  m_SizeDelta: {x: 1066.9355, y: 675.4987}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1596071980
 MonoBehaviour:
