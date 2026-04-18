@@ -4,7 +4,8 @@ using UnityEngine;
 public class Ammo_UI : MonoBehaviour
 {
     public TextMeshProUGUI Current_ammo_UI;
-
+    public TextMeshProUGUI total_ammo;
+    bool isStart = true;
     public void UpdateAmmo(int currentAmmo)
     {
 
@@ -17,9 +18,10 @@ public class Ammo_UI : MonoBehaviour
         Current_ammo_UI.text = PlayerInventory.Instance.DecreaseAmmo().ToString();
     }
 
-    void Start()
+    public void SetInitialAmmo()
     {
-        Current_ammo_UI.text = PlayerInventory.Instance.InitialAmmo().ToString();
+        Current_ammo_UI.text = PlayerInventory.Instance.CurrentAmmo().ToString();
+        total_ammo.text = PlayerInventory.Instance.GetMaxAmmo().ToString();
     }
     private void OnEnable()
     {

@@ -40,9 +40,10 @@ public abstract class WeaponBase : MonoBehaviour
 
     protected virtual void ExecuteShoot()
     {
-        if (PlayerInventory.Instance.playerInventoryDataSo.AmmoAmount <= 0)
+        if (PlayerInventory.Instance.CurrentAmmo() <= 0)
         {
             Debug.Log("Mermi yok!");
+            SoundManager.Instance.PlayAudioClip(weaponData.emptyGunSound);
             return;
         }
 
@@ -81,6 +82,7 @@ public abstract class WeaponBase : MonoBehaviour
         }
 
         GetComponentInParent<WeaponManager>().ApplyRecoil();
+
     }
 
     

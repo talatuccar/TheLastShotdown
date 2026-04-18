@@ -7,9 +7,19 @@ public class WeaponDataSo : ScriptableObject
     public string weaponName;
     public float damage;
     public float fireRate;
-    public int maxAmmo;
+    //public int AmmoAmmount;
     public float range;
-    
+    public int maxAmmo; 
+
+    [HideInInspector]
+    public int currentAmmo; 
+
+   
+    public void Initialize()
+    {
+        currentAmmo = maxAmmo;
+    }
+
     public GameObject muzzleFlashPrefab;
     public Image gunSwitchedFrameUI;
 
@@ -21,6 +31,7 @@ public class WeaponDataSo : ScriptableObject
     public float snappiness = 10f; 
     public float returnSpeed = 5f; 
     public AudioClip fireSound;
+    public AudioClip emptyGunSound;
 
 
     [Header("Sniper Settings")]

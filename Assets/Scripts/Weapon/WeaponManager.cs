@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
 public class WeaponManager : MonoBehaviour
 {
 
@@ -19,18 +20,25 @@ public class WeaponManager : MonoBehaviour
     private bool isSwitching = false;
     private int pendingWeaponIndex;
     public Outline[] weaponUIOutlines;
+    public UnityEvent weaponInitialized;
     void Awake()
     {
         input = GetComponentInParent<FPSInput>();
+       
     }
 
     void Start()
     {
-       
+        foreach (var weapon in allWeapons)
+        {
+            weapon.weaponData.Initialize(); 
+        }
         if (allWeapons.Length > 0)
         {
             SelectWeapon(0);
+           
         }
+
     }
 
     void OnEnable()
@@ -78,7 +86,8 @@ public class WeaponManager : MonoBehaviour
     }
 
     public void SelectWeapon(int index)
-    {
+    {   
+      
         if (index < 0 || index >= allWeapons.Length || isSwitching) return;
         if (currentWeapon == allWeapons[index] && allWeapons[index].gameObject.activeSelf) return;
 
@@ -113,8 +122,12 @@ public class WeaponManager : MonoBehaviour
 
             if (shouldBeActive)
             {
+               
                 allWeapons[i].enabled = true;
                 currentWeapon = allWeapons[i];
+                PlayerInventory.Instance.currentWeapon = currentWeapon;
+                weaponInitialized?.Invoke();
+
                 targetRotation = Vector3.zero;
                 currentRotation = Vector3.zero;
             }
@@ -138,8 +151,8 @@ public class WeaponManager : MonoBehaviour
     public void ApplyRecoil()
     {
         if (currentWeapon == null) return;
-
-        // WeaponDataSo üzerindeki deðerlere göre tepme uygula
+       
+        
         targetRotation += new Vector3(-currentWeapon.weaponData.recoilX,
             Random.Range(-currentWeapon.weaponData.recoilY, currentWeapon.weaponData.recoilY),
             Random.Range(-currentWeapon.weaponData.recoilY, currentWeapon.weaponData.recoilY));

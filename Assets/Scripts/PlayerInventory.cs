@@ -1,11 +1,14 @@
-using UnityEngine;
 using System;
+using UnityEngine;
+
 public class PlayerInventory : MonoBehaviour
 {
     public static PlayerInventory Instance;
-
+    public WeaponBase currentWeapon;
     public PlayerInventorySo playerInventoryDataSo;
     public static event Action<int> OnHealthDataChanged;
+   
+
     private void Awake()
     {
         if (Instance == null) Instance = this;
@@ -29,11 +32,11 @@ public class PlayerInventory : MonoBehaviour
     }
     public int DecreaseAmmo()
     {
-        if (playerInventoryDataSo.AmmoAmount > 0)
+        if (currentWeapon.weaponData.currentAmmo > 0)
         {
-            playerInventoryDataSo.AmmoAmount--;
+            currentWeapon.weaponData.currentAmmo--;
         }
-        return playerInventoryDataSo.AmmoAmount;
+        return currentWeapon.weaponData.currentAmmo;
     }
 
     public int AddAmmo(int increaseAmmo)
@@ -41,17 +44,19 @@ public class PlayerInventory : MonoBehaviour
 
         return playerInventoryDataSo.AmmoAmount += increaseAmmo;
     }
-
+    public int CurrentAmmo()
+    {
+       return currentWeapon.weaponData.currentAmmo;
+    }
     public int InitialHeath()
     {
 
         return playerInventoryDataSo.HealtAmount;
     }
 
-    public int InitialAmmo()
+    public int GetMaxAmmo()
     {
-
-        return playerInventoryDataSo.AmmoAmount;
+        return currentWeapon.weaponData.maxAmmo;
     }
 
     public void Reset()
