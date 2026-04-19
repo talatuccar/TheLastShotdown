@@ -7,7 +7,7 @@ public class PlayerInventory : MonoBehaviour
     public WeaponBase currentWeapon;
     public PlayerInventorySo playerInventoryDataSo;
     public static event Action<int> OnHealthDataChanged;
-   
+    
 
     private void Awake()
     {
@@ -19,15 +19,15 @@ public class PlayerInventory : MonoBehaviour
     public void DecreaseHealth(int amount)
     {
         playerInventoryDataSo.HealtAmount -= amount;
-       
+
         OnHealthDataChanged?.Invoke(playerInventoryDataSo.HealtAmount);
     }
 
-    
+
     public void AddHealth(int amount)
     {
         playerInventoryDataSo.HealtAmount += amount;
-       
+
         OnHealthDataChanged?.Invoke(playerInventoryDataSo.HealtAmount);
     }
     public int DecreaseAmmo()
@@ -42,11 +42,11 @@ public class PlayerInventory : MonoBehaviour
     public int AddAmmo(int increaseAmmo)
     {
 
-        return playerInventoryDataSo.AmmoAmount += increaseAmmo;
+        return currentWeapon.weaponData.currentAmmo += increaseAmmo;
     }
     public int CurrentAmmo()
     {
-       return currentWeapon.weaponData.currentAmmo;
+        return currentWeapon.weaponData.currentAmmo;
     }
     public int InitialHeath()
     {
@@ -56,12 +56,13 @@ public class PlayerInventory : MonoBehaviour
 
     public int GetMaxAmmo()
     {
+
         return currentWeapon.weaponData.maxAmmo;
     }
 
     public void Reset()
     {
         playerInventoryDataSo.HealtAmount = 100;
-        playerInventoryDataSo.AmmoAmount = 200;
+        //playerInventoryDataSo.AmmoAmount = 200;
     }
 }
