@@ -40,6 +40,7 @@ public abstract class WeaponBase : MonoBehaviour
 
     protected virtual void ExecuteShoot()
     {
+        PlayerStats.totalShootedBullet++;
         if (PlayerInventory.Instance.CurrentAmmo() <= 0)
         {
             Debug.Log("Mermi yok!");

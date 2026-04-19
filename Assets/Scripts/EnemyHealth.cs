@@ -13,9 +13,9 @@ public class EnemyHealth : MonoBehaviour, IDamageable
 
     private EnemyController _enemy;
     private float _nextHitReactionTime;
-    [SerializeField] private float hitReactionCooldown = 2f; 
+    [SerializeField] private float hitReactionCooldown = 2f;
 
-   
+
     private void Awake()
     {
         _currentHealth = maxHealth;
@@ -30,7 +30,7 @@ public class EnemyHealth : MonoBehaviour, IDamageable
         _currentHealth -= amount;
 
         EffectPooler.Instance.SpawnFromPool("Blood", hitPoint, Quaternion.identity);
-       
+
 
         if (_currentHealth <= 0)
         {
@@ -82,6 +82,7 @@ public class EnemyHealth : MonoBehaviour, IDamageable
         if (headshot)
         {
             type = DeathType.Headshot;
+            PlayerStats.headshotCounter++;
         }
 
         else if (_enemy.agent.velocity.magnitude > 0.5f)
@@ -99,5 +100,5 @@ public class EnemyHealth : MonoBehaviour, IDamageable
 
         Destroy(gameObject, 5f);
     }
-    
+
 }
