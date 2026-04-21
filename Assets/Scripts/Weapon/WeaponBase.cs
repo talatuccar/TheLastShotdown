@@ -68,9 +68,11 @@ public abstract class WeaponBase : MonoBehaviour
         int layerMask = ~(1 << playerLayer);
         if (Physics.Raycast(ray, out RaycastHit hit, weaponData.range, layerMask))
         {
-            Debug.Log("Vurulan: " + hit.transform.name);
+            //Debug.Log("Vurulan: " + hit.transform.name);
+            PlayerStats.totalHitDistance += hit.distance;
 
-            
+            Debug.Log("mesafe: " + hit.distance);
+           
             IDamageable hitTarget = hit.transform.GetComponent<IDamageable>();
 
             if (hitTarget != null)
@@ -94,7 +96,7 @@ public abstract class WeaponBase : MonoBehaviour
         string poolTag = "";
         if (hit.transform.gameObject.layer == LayerMask.NameToLayer("NPC"))
         {
-           
+            PlayerStats.totalSuccessfulHits++;
             Debug.Log("NPC Vuruldu! Kan çýkýyor");
             
         }
