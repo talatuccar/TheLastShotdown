@@ -8,9 +8,6 @@ public class EnemyHealth : MonoBehaviour, IDamageable
     private float _currentHealth;
     private bool _isDead = false;
 
-    //[Header("Visuals & Effects")]
-    //public GameObject bloodEffectPrefab;
-
     private EnemyController _enemy;
     private float _nextHitReactionTime;
     [SerializeField] private float hitReactionCooldown = 2f;

@@ -6,7 +6,7 @@ public class ItemBoxSpawn : MonoBehaviour
     
     public BreakableDataSo breakableDataSo;
   
-    public int spawnCount = 5;   // Kaç tane kutu oluþturulacak
+    public int spawnCount = 5;   // kaç tane kutu oluþturulacak
 
     private List<Transform> spawnPoints = new List<Transform>();
 

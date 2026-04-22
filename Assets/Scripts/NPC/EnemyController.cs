@@ -32,7 +32,6 @@ public class EnemyController : MonoBehaviour
 
     private void Awake()
     {
-        //player = GameObject.FindGameObjectWithTag("Player").transform;
         waypoints = levelDataSo.roadPoints;
     }
     void Start()

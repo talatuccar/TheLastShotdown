@@ -1,4 +1,3 @@
-using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
 
 public static class PlayerStats
@@ -10,8 +9,7 @@ public static class PlayerStats
     public static float HeadShotRatio()
     {
 
-        //int headshotRatio = (headshotCounter / totalShootedBullet) * 100;
-        //return headshotRatio;
+       
         float headshotRatio = ((float)headshotCounter / totalShootedBullet) * 100;
         return Mathf.RoundToInt(headshotRatio);
     }
@@ -20,7 +18,6 @@ public static class PlayerStats
     public static float AverageHitDistance()
     {
         if (totalSuccessfulHits == 0) return 0;
-        //return totalHitDistance / totalSuccessfulHits;
         return Mathf.RoundToInt(totalHitDistance / totalSuccessfulHits);
     }
 

@@ -8,11 +8,11 @@ public class DifficultyManager : MonoBehaviour
 
     public void SetEnemyCount(DifficultyData difficultyData)
     {
-        // Eðer obje yok ediliyorsa (hata almamak için) iþlemi durdur
+        
         if (this == null || activeDifficulty == null) return;
 
-        //activeDifficulty.currentDifficulty = difficultyData;
-        PlayerPrefs.SetInt("dif", difficultyData.spawnedEnemyCount);
+       
+        PlayerPrefs.SetInt("difficulty", difficultyData.spawnedEnemyCount);
 
         SceneManager.LoadScene("LoadingScene");
     }

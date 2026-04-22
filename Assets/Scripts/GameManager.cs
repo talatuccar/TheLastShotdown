@@ -10,8 +10,7 @@ public class GameManager : MonoBehaviour
     public PasswordUI passwordManagerUI; 
     public NumpadUI numpadUI;
     public SpawnManager spawnManager;
-    //public SoundManager soundManager;
-    //public PlayerInventory playerInventory; 
+   
 
     public ActiveDifficultySO activeDifficulty;
 
@@ -45,14 +44,9 @@ public class GameManager : MonoBehaviour
  
     void TriggerSpawn()
     {
-        //if (DifficultyManager.ChosenDifficulty != null)
-        //{
-        //    spawnManager.SpawnEnemies(DifficultyManager.ChosenDifficulty.spawnedEnemyCount);
-        //}
+        
 
-        //spawnManager.SpawnEnemies(activeDifficulty.currentDifficulty.spawnedEnemyCount);
-
-        spawnManager.SpawnEnemies(PlayerPrefs.GetInt("dif"));
+        spawnManager.SpawnEnemies(PlayerPrefs.GetInt("difficulty"));
        
     }
 

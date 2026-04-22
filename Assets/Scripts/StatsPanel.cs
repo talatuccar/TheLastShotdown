@@ -12,10 +12,4 @@ public class StatsPanel : MonoBehaviour
         headShotRatioTxt.text = PlayerStats.HeadShotRatio().ToString();
         AverageHitDistanceTxt.text = PlayerStats.AverageHitDistance().ToString() + " m";
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
 }

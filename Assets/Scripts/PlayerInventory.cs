@@ -63,6 +63,5 @@ public class PlayerInventory : MonoBehaviour
     public void Reset()
     {
         playerInventoryDataSo.HealtAmount = 100;
-        //playerInventoryDataSo.AmmoAmount = 200;
     }
 }
