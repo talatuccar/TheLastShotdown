@@ -1,17 +1,17 @@
 using UnityEngine;
 
-public class BreakableBox : MonoBehaviour,IDamageable
+public class BreakableBox : MonoBehaviour, IDamageable
 {
-    public BreakableDataSo breakableData; 
+    public BreakableDataSo breakableData;
     private float currentHealth;
-   
+
     void Start()
     {
         if (breakableData != null)
             currentHealth = breakableData.maxHealth;
     }
 
-    public void TakeDamage(float amount,Vector3 hitPoint)
+    public void TakeDamage(float amount, Vector3 hitPoint)
     {
         currentHealth -= amount;
         if (currentHealth <= 0)
@@ -22,15 +22,12 @@ public class BreakableBox : MonoBehaviour,IDamageable
 
     void Break()
     {
-        // Kýrýlmýþ modeli oluþtur
-        if (breakableData.brokenPrefab != null)
+
+        if (breakableData.brokenBoxPrefab != null)
         {
-            GameObject broken = Instantiate(breakableData.brokenPrefab, transform.position, transform.rotation);
-           
-            Destroy(broken,5f);
+            EffectPooler.Instance.SpawnFromPool(breakableData.breakableBoxPoolTag, transform.position, transform.rotation);
         }
 
-       
 
         int random = Random.Range(0, breakableData.lootPrefabs.Length);
         if (breakableData.lootPrefabs[random] != null)
