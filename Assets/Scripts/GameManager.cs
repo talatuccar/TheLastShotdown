@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -10,8 +11,7 @@ public class GameManager : MonoBehaviour
     public PasswordUI passwordManagerUI; 
     public NumpadUI numpadUI;
     public SpawnManager spawnManager;
-   
-
+    
     public ActiveDifficultySO activeDifficulty;
 
 
@@ -37,6 +37,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+       
         TriggerSpawn();
        
     }

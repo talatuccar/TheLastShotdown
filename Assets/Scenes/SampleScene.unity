@@ -75225,6 +75225,7 @@ GameObject:
   - component: {fileID: 2055982224}
   - component: {fileID: 2055982226}
   - component: {fileID: 2055982225}
+  - component: {fileID: 2055982227}
   m_Layer: 5
   m_Name: Crosshair
   m_TagString: Untagged
@@ -75289,6 +75290,29 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2055982223}
   m_CullTransparentMesh: 1
+--- !u!114 &2055982227
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2055982223}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e982e0bdfd5ecd4c806698c630c0b8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  crosshairImage: {fileID: 2055982225}
+  allCrosshairs:
+  - {fileID: 11400000, guid: 50d9a657ecaa4534aa58ab31566ac3d1, type: 2}
+  - {fileID: 11400000, guid: e3c3c6df5d6e57c448d3bc8dc4a9cc8c, type: 2}
+  - {fileID: 11400000, guid: c227b9287c92bc04283dd43100afce95, type: 2}
+  - {fileID: 11400000, guid: 25d9ed413d53b0d44b7389a2716a24b0, type: 2}
+  - {fileID: 11400000, guid: c3953db847ce1094c92b3cc7f644a556, type: 2}
+  - {fileID: 11400000, guid: 6d4af2005f9f7a945931e4d22500487a, type: 2}
+  - {fileID: 11400000, guid: 116b8acd5957a624d9714568faad4311, type: 2}
+  - {fileID: 11400000, guid: ba58720f7da94aa4495ab3ae43cad9ad, type: 2}
+  - {fileID: 11400000, guid: dbeb7b2ddc90e724f8ea49cf08c2fabd, type: 2}
 --- !u!4 &2056963013 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1453485022173259434, guid: eb4b38db67a56dc469a2c2aafcc36add, type: 3}
