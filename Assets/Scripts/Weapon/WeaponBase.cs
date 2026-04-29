@@ -84,11 +84,11 @@ public abstract class WeaponBase : MonoBehaviour
             HandleHitVisuals(hit);
         }
 
-        GetComponentInParent<WeaponManager>().ApplyRecoil();
-
+        //GetComponentInParent<WeaponManager>().ApplyRecoil();
+        GetComponentInParent<WeaponSway>().ApplyRecoil();
     }
 
-    
+
     private void HandleHitVisuals(RaycastHit hit)
     {
         

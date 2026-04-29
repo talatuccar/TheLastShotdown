@@ -148,14 +148,14 @@ public class WeaponManager : MonoBehaviour
         if (currentWeapon != null) currentWeapon.Fire();
     }
 
-    public void ApplyRecoil()
-    {
-        if (currentWeapon == null) return;
+    //public void ApplyRecoil()
+    //{
+    //    if (currentWeapon == null) return;
        
         
-        targetRotation += new Vector3(-currentWeapon.weaponData.recoilX,
-            Random.Range(-currentWeapon.weaponData.recoilY, currentWeapon.weaponData.recoilY),
-            Random.Range(-currentWeapon.weaponData.recoilY, currentWeapon.weaponData.recoilY));
-    }
+    //    targetRotation += new Vector3(-currentWeapon.weaponData.recoilX,
+    //        Random.Range(-currentWeapon.weaponData.recoilY, currentWeapon.weaponData.recoilY),
+    //        Random.Range(-currentWeapon.weaponData.recoilY, currentWeapon.weaponData.recoilY));
+    //}
 
 }
