@@ -75842,7 +75842,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5043778399226277202, guid: 935f2c54522155041bb7821b7e7e47e8, type: 3}
       propertyPath: sensitivity
-      value: 5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5230576910739161463, guid: 935f2c54522155041bb7821b7e7e47e8, type: 3}
       propertyPath: m_LocalScale.x

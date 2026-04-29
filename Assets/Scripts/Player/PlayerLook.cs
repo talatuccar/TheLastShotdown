@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class PlayerLook : MonoBehaviour
 {
-    public float sensitivity = 2f;
+    public float sensitivity;
     public Transform cameraTransform;
 
     private FPSInput input;
@@ -11,11 +11,11 @@ public class PlayerLook : MonoBehaviour
     void Awake()
     {
         input = GetComponent<FPSInput>();
+        sensitivity = PlayerPrefs.GetFloat("MouseSensitivity", 5f);
     }
     void Start()
     {
-        // Fare imlecini oyunun ortasýna kilitler ve gizler bu daha sonra normal c harp clasýna taþýnabilir
-        // mesela oyun ayarlarý diye genel bir sýnýfa
+       
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
