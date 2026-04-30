@@ -84138,8 +84138,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_EffectColor: {r: 0.7214495, g: 1, b: 0.023584902, a: 1}
-  m_EffectDistance: {x: 0, y: -13}
+  m_EffectColor: {r: 0.52278394, g: 0.6226415, b: 0.2731399, a: 1}
+  m_EffectDistance: {x: 5, y: -12}
   m_UseGraphicAlpha: 1
 --- !u!4 &6626214117668853201
 Transform:
