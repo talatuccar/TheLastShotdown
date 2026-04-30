@@ -1883,8 +1883,8 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.5724254, g: 0.9339623, b: 0.2687344, a: 1}
-    m_PressedColor: {r: 0.4449578, g: 0.8018868, b: 0.14751692, a: 1}
+    m_HighlightedColor: {r: 0.91764706, g: 0.94509804, b: 0.21960784, a: 1}
+    m_PressedColor: {r: 0.11764706, g: 0.8039216, b: 0.25490198, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
@@ -3405,7 +3405,7 @@ MonoBehaviour:
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
-    m_ColorMultiplier: 1
+    m_ColorMultiplier: 1.5
     m_FadeDuration: 0.1
   m_SpriteState:
     m_HighlightedSprite: {fileID: 0}
@@ -3418,7 +3418,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 779528174}
   m_OnClick:
     m_PersistentCalls:
@@ -6269,7 +6269,7 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 0.47153327, g: 0.9150943, b: 0.44459772, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
@@ -6366,7 +6366,7 @@ GameObject:
   - component: {fileID: 1539134741}
   - component: {fileID: 1539134740}
   m_Layer: 5
-  m_Name: ZOR
+  m_Name: hard
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6414,8 +6414,8 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.53333336, g: 0.9254902, b: 0.20392157, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_HighlightedColor: {r: 0.91764706, g: 0.94509804, b: 0.21960784, a: 1}
+    m_PressedColor: {r: 0.11764706, g: 0.8, b: 0.25490198, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
@@ -6800,7 +6800,7 @@ GameObject:
   - component: {fileID: 1608868669}
   - component: {fileID: 1608868668}
   m_Layer: 5
-  m_Name: ORTA
+  m_Name: medium
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6849,7 +6849,7 @@ MonoBehaviour:
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9174333, g: 0.9433962, b: 0.21804914, a: 1}
-    m_PressedColor: {r: 0.036712356, g: 0.7075472, b: 0.1670744, a: 1}
+    m_PressedColor: {r: 0.11725702, g: 0.8018868, b: 0.2533822, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
