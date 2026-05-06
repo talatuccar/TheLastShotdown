@@ -1041,6 +1041,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8019954409837969655, guid: 32e2c04260a1c0348b0867a2c53134bd, type: 3}
+      propertyPath: enemyData
+      value: 
+      objectReference: {fileID: 11400000, guid: 15100365a48b7ab4196612d9680b9a05, type: 2}
+    - target: {fileID: 8019954409837969655, guid: 32e2c04260a1c0348b0867a2c53134bd, type: 3}
       propertyPath: isTactical
       value: 1
       objectReference: {fileID: 0}
@@ -1428,6 +1432,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8019954409837969655, guid: 32e2c04260a1c0348b0867a2c53134bd, type: 3}
+      propertyPath: enemyData
+      value: 
+      objectReference: {fileID: 11400000, guid: 99cdc2e404efa194b885e39349ff7313, type: 2}
     - target: {fileID: 8019954409837969655, guid: 32e2c04260a1c0348b0867a2c53134bd, type: 3}
       propertyPath: passwordIndex
       value: 0
@@ -13536,6 +13544,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8019954409837969655, guid: 32e2c04260a1c0348b0867a2c53134bd, type: 3}
+      propertyPath: enemyData
+      value: 
+      objectReference: {fileID: 11400000, guid: fa7e9a85f29df4c488659e010302d5b3, type: 2}
+    - target: {fileID: 8019954409837969655, guid: 32e2c04260a1c0348b0867a2c53134bd, type: 3}
       propertyPath: passwordIndex
       value: 0
       objectReference: {fileID: 0}
@@ -13601,6 +13613,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8019954409837969655, guid: 32e2c04260a1c0348b0867a2c53134bd, type: 3}
+      propertyPath: enemyData
+      value: 
+      objectReference: {fileID: 11400000, guid: 99cdc2e404efa194b885e39349ff7313, type: 2}
     - target: {fileID: 8019954409837969655, guid: 32e2c04260a1c0348b0867a2c53134bd, type: 3}
       propertyPath: isTactical
       value: 1
@@ -22785,6 +22801,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8019954409837969655, guid: 32e2c04260a1c0348b0867a2c53134bd, type: 3}
+      propertyPath: enemyData
+      value: 
+      objectReference: {fileID: 11400000, guid: fa7e9a85f29df4c488659e010302d5b3, type: 2}
     - target: {fileID: 8019954409837969655, guid: 32e2c04260a1c0348b0867a2c53134bd, type: 3}
       propertyPath: passwordIndex
       value: 0
@@ -43532,6 +43552,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8019954409837969655, guid: 32e2c04260a1c0348b0867a2c53134bd, type: 3}
+      propertyPath: enemyData
+      value: 
+      objectReference: {fileID: 11400000, guid: 99cdc2e404efa194b885e39349ff7313, type: 2}
+    - target: {fileID: 8019954409837969655, guid: 32e2c04260a1c0348b0867a2c53134bd, type: 3}
       propertyPath: passwordIndex
       value: 0
       objectReference: {fileID: 0}
@@ -55814,6 +55838,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8019954409837969655, guid: 32e2c04260a1c0348b0867a2c53134bd, type: 3}
+      propertyPath: enemyData
+      value: 
+      objectReference: {fileID: 11400000, guid: fa7e9a85f29df4c488659e010302d5b3, type: 2}
     - target: {fileID: 8019954409837969655, guid: 32e2c04260a1c0348b0867a2c53134bd, type: 3}
       propertyPath: isTactical
       value: 1
@@ -72052,6 +72080,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8019954409837969655, guid: 32e2c04260a1c0348b0867a2c53134bd, type: 3}
+      propertyPath: enemyData
+      value: 
+      objectReference: {fileID: 11400000, guid: 15100365a48b7ab4196612d9680b9a05, type: 2}
+    - target: {fileID: 8019954409837969655, guid: 32e2c04260a1c0348b0867a2c53134bd, type: 3}
       propertyPath: passwordIndex
       value: 0
       objectReference: {fileID: 0}
@@ -75060,6 +75092,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8019954409837969655, guid: 32e2c04260a1c0348b0867a2c53134bd, type: 3}
+      propertyPath: enemyData
+      value: 
+      objectReference: {fileID: 11400000, guid: 15100365a48b7ab4196612d9680b9a05, type: 2}
     - target: {fileID: 8019954409837969655, guid: 32e2c04260a1c0348b0867a2c53134bd, type: 3}
       propertyPath: passwordIndex
       value: 0

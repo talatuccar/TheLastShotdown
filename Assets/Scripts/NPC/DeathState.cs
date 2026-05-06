@@ -16,34 +16,7 @@ namespace AI.FSM
             _deathType = deathType;
         }
 
-        //public void OnEnter()
-        //{
-
-        //    if (_enemy.agent != null)
-        //    {
-        //        _enemy.agent.isStopped = true;
-        //        _enemy.agent.enabled = false;
-        //    }
-        //    _enemy.StopAllCoroutines();
-
-
-        //    if (_enemy.anim != null)
-        //    {
-        //        switch (_deathType)
-        //        {
-        //            case DeathType.Headshot:
-        //                _enemy.anim.SetTrigger("Die_Headshot");
-        //                break;
-        //            case DeathType.ChaseDeath:
-        //                _enemy.anim.SetTrigger("Die_Running");
-        //                break;
-        //            default:
-        //                _enemy.anim.SetTrigger("Die");
-        //                break;
-        //        }
-        //    }
-
-        //}
+       
         public void OnEnter()
         {
             int hitLayerIndex = _enemy.anim.GetLayerIndex("HitLayer");
@@ -53,16 +26,16 @@ namespace AI.FSM
             }
             _enemy.anim.ResetTrigger("Hit_Idle");
             _enemy.anim.ResetTrigger("Hit_Running");
-            // 1. Önce NavMesh'i durdur (Ama objeyi kapatma!)
+            
             if (_enemy.agent != null && _enemy.agent.isActiveAndEnabled)
             {
                 _enemy.agent.isStopped = true;
             }
 
-            // 2. Animasyonu tetikle
+           
             if (_enemy.anim != null)
             {
-                // Burada Animator'ýn o anki hýzý sýfýrlamasýný engellemiþ olduk
+               
                 switch (_deathType)
                 {
                     case DeathType.Headshot:
@@ -78,8 +51,7 @@ namespace AI.FSM
                 }
             }
 
-            // 3. EN ÖNEMLÝ KISIM: 
-            // Agent.enabled = false iþlemini animasyon baþladýktan 
+            
             // çok kýsa bir süre sonraya ertelemek en saðlýklýsýdýr.
             _enemy.StartCoroutine(DisableAgentDelayed());
         }

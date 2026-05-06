@@ -30,15 +30,14 @@ public class AttackState : IState
 
         LookAtPlayer();
 
-        // Sadece ateş etme zamanı geldiğinde ateş et
+       
         if (Time.time >= _nextFireTime)
         {
-            // Eğer CanSeePlayer kontrolü yapmak istersen buraya ekleyebilirsin
+            
             _enemy.Shoot();
             _nextFireTime = Time.time + _fireRate;
         }
-        // BURADAKİ ELSE BLOĞUNU SİLDİK! 
-        // Ateş edemediği sürede (bekleme süresinde) State'te kalmaya devam etmeli.
+       
 
         // Sadece mesafe çok açılırsa State'ten çık
         float distance = Vector3.Distance(_enemy.transform.position, _enemy.Player.position);
@@ -61,19 +60,7 @@ public class AttackState : IState
         }
     }
 
-    //private void Shoot()
-    //{
-    //    if (_enemy.muzzleFlashParticle != null)
-    //    {
-    //        _enemy.muzzleFlashParticle.Play();  
-
-
-    //    }
-    //    SoundManager.Instance.PlayAudioClip(_enemy.enemyData.enemyfireSound);
-    //    int randomHealthDecrease = UnityEngine.Random.Range(0, 10);
-    //    PlayerInventory.Instance.DecreaseHealth(randomHealthDecrease);
-    //}
-
+    
     public void OnExit()
     {
         _enemy.agent.isStopped = false;

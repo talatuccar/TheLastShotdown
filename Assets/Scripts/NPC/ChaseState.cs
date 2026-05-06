@@ -9,10 +9,8 @@ public class ChaseState : IState
     public ChaseState(EnemyController enemy) => _enemy = enemy;
 
     public void OnEnter()
-    {
-        
-        _enemy.agent.speed = _enemy.enemyData.chaseSpeed;
-        Debug.Log("Seni gördüm! Geliyorum!");
+    {      
+        _enemy.agent.speed = _enemy.enemyData.chaseSpeed;     
     }
 
     public void OnUpdate()
