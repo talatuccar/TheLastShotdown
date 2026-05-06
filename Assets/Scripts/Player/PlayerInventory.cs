@@ -7,7 +7,8 @@ public class PlayerInventory : MonoBehaviour
     public WeaponBase currentWeapon;
     public PlayerInventorySo playerInventoryDataSo;
     public static event Action<int> OnHealthDataChanged;
-    
+    public GameObject LoseTabPanel;
+
 
     private void Awake()
     {
@@ -20,7 +21,15 @@ public class PlayerInventory : MonoBehaviour
     {
         playerInventoryDataSo.HealtAmount -= amount;
 
-        OnHealthDataChanged?.Invoke(playerInventoryDataSo.HealtAmount);
+        if (playerInventoryDataSo.HealtAmount < 1)
+        {
+            OnHealthDataChanged?.Invoke(0);
+            GameManager.Instance.CompleteLevel(LoseTabPanel, playerInventoryDataSo.PlayerDeadAudioClip);
+            return;
+        }
+            
+
+            OnHealthDataChanged?.Invoke(playerInventoryDataSo.HealtAmount);
     }
 
 

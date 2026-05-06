@@ -51,7 +51,7 @@ public class GameManager : MonoBehaviour
        
     }
 
-    public void CompleteLevel(GameObject winTabPanel, AudioClip victoryMusic)
+    public void CompleteLevel(GameObject gameEndPanel, AudioClip gameEndSFX)
     {
         Time.timeScale = 0f;
 
@@ -61,13 +61,13 @@ public class GameManager : MonoBehaviour
        
 
        
-        if (winTabPanel != null) winTabPanel.SetActive(true);
+        if (gameEndPanel != null) gameEndPanel.SetActive(true);
 
        
-        if (victoryMusic != null)
+        if (gameEndSFX != null)
         {
             SoundManager.Instance.AudioSource.loop = true;
-            SoundManager.Instance.PlayAudioClip(victoryMusic);
+            SoundManager.Instance.PlayAudioClip(gameEndSFX);
            
         }
 
