@@ -16,37 +16,37 @@ public class HackingSystem : MonoBehaviour
 
     void Update()
     {
-        if (_isCompleted || _input == null) return;
+    //    if (_isCompleted || _input == null) return;
 
-        if (_input.IsInteracting)
-        {
-            _currentTimer += Time.deltaTime;
+    //    if (_input.IsInteracting)
+    //    {
+    //        _currentTimer += Time.deltaTime;
 
-            // Matematiksel Nan korumasý: hackDuration asla 0 olmamalý
-            float progress = Mathf.Clamp01(_currentTimer / hackDuration);
-            progressCircle.fillAmount = progress;
+    //        // Matematiksel Nan korumasý: hackDuration asla 0 olmamalý
+    //        float progress = Mathf.Clamp01(_currentTimer / hackDuration);
+    //        progressCircle.fillAmount = progress;
 
-            if (_currentTimer >= hackDuration)
-            {
-                _isCompleted = true;
-                FinishHack();
-            }
-            ScrollScreenActivate(true);  
-        }
-        else
-        {
-            _currentTimer = 0f;
-            progressCircle.fillAmount = 0f;
-            ScrollScreenActivate(false);
-        }
-    }
+    //        if (_currentTimer >= hackDuration)
+    //        {
+    //            _isCompleted = true;
+    //            FinishHack();
+    //        }
+    //        ScrollScreenActivate(true);  
+    //    }
+    //    else
+    //    {
+    //        _currentTimer = 0f;
+    //        progressCircle.fillAmount = 0f;
+    //        ScrollScreenActivate(false);
+    //    }
+    //}
 
-    void ScrollScreenActivate(bool isActive)
-    {
-        if (scrollingScreen != null)
-        {
-            scrollingScreen.SetActive(isActive);
-        }
+    //void ScrollScreenActivate(bool isActive)
+    //{
+    //    if (scrollingScreen != null)
+    //    {
+    //        scrollingScreen.SetActive(isActive);
+    //    }
 
     }
     void FinishHack()
@@ -55,5 +55,46 @@ public class HackingSystem : MonoBehaviour
         if (progressCircle != null) progressCircle.transform.parent.gameObject.SetActive(false);
 
         GameManager.Instance.CompleteLevel(winTabPanel, matrixSFX);
-    }  
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (_isCompleted || _input == null) return;
+
+        if (other.CompareTag("Player"))
+        {
+            if (_input.IsInteracting)
+            {
+                _currentTimer += Time.deltaTime;
+
+                // Matematiksel Nan korumasý: hackDuration asla 0 olmamalý
+                float progress = Mathf.Clamp01(_currentTimer / hackDuration);
+                progressCircle.fillAmount = progress;
+
+                if (_currentTimer >= hackDuration)
+                {
+                    _isCompleted = true;
+                    FinishHack();
+                }
+                ScrollScreenActivate(true);
+            }
+            else
+            {
+                _currentTimer = 0f;
+                progressCircle.fillAmount = 0f;
+                ScrollScreenActivate(false);
+            }
+        }
+
+        void ScrollScreenActivate(bool isActive)
+        {
+            if (scrollingScreen != null)
+            {
+                scrollingScreen.SetActive(isActive);
+            }
+        }
+
+    }
+
+        
 }

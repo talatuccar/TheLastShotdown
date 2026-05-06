@@ -447,7 +447,7 @@ MonoBehaviour:
   storyTextTab: {fileID: 985670753}
   maskArea: {fileID: 1596071979}
   flowSpeed: 1
-  textEndCloseOffset: 500
+  textEndCloseOffset: 750
 --- !u!1 &84303758
 GameObject:
   m_ObjectHideFlags: 0

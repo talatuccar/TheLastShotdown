@@ -9783,6 +9783,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1034596256}
     m_Modifications:
+    - target: {fileID: 2228646729568854747, guid: 660b0c26605fb6845909e2dc09053224, type: 3}
+      propertyPath: m_Size.y
+      value: 2.1252847
+      objectReference: {fileID: 0}
+    - target: {fileID: 2228646729568854747, guid: 660b0c26605fb6845909e2dc09053224, type: 3}
+      propertyPath: m_Size.z
+      value: 0.90467244
+      objectReference: {fileID: 0}
+    - target: {fileID: 2228646729568854747, guid: 660b0c26605fb6845909e2dc09053224, type: 3}
+      propertyPath: m_Center.x
+      value: -0.0036636388
+      objectReference: {fileID: 0}
+    - target: {fileID: 2228646729568854747, guid: 660b0c26605fb6845909e2dc09053224, type: 3}
+      propertyPath: m_Center.y
+      value: 1.0626397
+      objectReference: {fileID: 0}
+    - target: {fileID: 2228646729568854747, guid: 660b0c26605fb6845909e2dc09053224, type: 3}
+      propertyPath: m_Center.z
+      value: 0.11318719
+      objectReference: {fileID: 0}
     - target: {fileID: 4713816807284334423, guid: 660b0c26605fb6845909e2dc09053224, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.3349427
@@ -9853,6 +9873,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4940395674102847587, guid: 660b0c26605fb6845909e2dc09053224, type: 3}
       insertIndex: -1
       addedObject: {fileID: 266731843}
+    - targetCorrespondingSourceObject: {fileID: 4940395674102847587, guid: 660b0c26605fb6845909e2dc09053224, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 266731844}
   m_SourcePrefab: {fileID: 100100000, guid: 660b0c26605fb6845909e2dc09053224, type: 3}
 --- !u!4 &266731841 stripped
 Transform:
@@ -9881,6 +9904,27 @@ MonoBehaviour:
   scrollingScreen: {fileID: 2126869470}
   matrixSFX: {fileID: 8300000, guid: 2e0b534e0170f0d4c992ca12b215766a, type: 3}
   winTabPanel: {fileID: 225264848}
+--- !u!65 &266731844
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 266731842}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.2988695, y: 1.9270031, z: 3.8349202}
+  m_Center: {x: -0.0036642165, y: 1.1899765, z: 1.5783106}
 --- !u!1001 &268348170
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13763,7 +13807,7 @@ MeshRenderer:
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
-  m_MotionVectors: 1
+  m_MotionVectors: 0
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
@@ -18767,6 +18811,7 @@ GameObject:
   - component: {fileID: 473731812}
   - component: {fileID: 473731814}
   - component: {fileID: 473731813}
+  - component: {fileID: 473731815}
   m_Layer: 0
   m_Name: Concrete_fence_v2_S
   m_TagString: Untagged
@@ -18801,7 +18846,7 @@ MeshRenderer:
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
-  m_MotionVectors: 1
+  m_MotionVectors: 0
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
@@ -18842,6 +18887,27 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 473731811}
   m_Mesh: {fileID: 4300008, guid: ed9ec036e5afbd34dae4f1602a3d77b8, type: 3}
+--- !u!65 &473731815
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 473731811}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.5380498, y: 2.5655234, z: 5.6724815}
+  m_Center: {x: -0.0000009536745, y: 0.00000023841858, z: -0.0000019073493}
 --- !u!1 &475503300
 GameObject:
   m_ObjectHideFlags: 0
@@ -25280,6 +25346,7 @@ GameObject:
   - component: {fileID: 656212982}
   - component: {fileID: 656212984}
   - component: {fileID: 656212983}
+  - component: {fileID: 656212985}
   m_Layer: 0
   m_Name: Concrete_fence_v2_S
   m_TagString: Untagged
@@ -25314,7 +25381,7 @@ MeshRenderer:
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
-  m_MotionVectors: 1
+  m_MotionVectors: 0
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
@@ -25355,6 +25422,27 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 656212981}
   m_Mesh: {fileID: 4300008, guid: ed9ec036e5afbd34dae4f1602a3d77b8, type: 3}
+--- !u!65 &656212985
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 656212981}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.5380498, y: 2.5655234, z: 5.672481}
+  m_Center: {x: -0.0000009536745, y: 0.00000011920928, z: -0.000009536743}
 --- !u!4 &656380879 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8250113047921840432, guid: b76f846b3379607468a593969b575654, type: 3}
@@ -36114,6 +36202,7 @@ GameObject:
   - component: {fileID: 908888258}
   - component: {fileID: 908888260}
   - component: {fileID: 908888259}
+  - component: {fileID: 908888261}
   m_Layer: 0
   m_Name: Concrete_fence_v2_S
   m_TagString: Untagged
@@ -36148,7 +36237,7 @@ MeshRenderer:
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
-  m_MotionVectors: 1
+  m_MotionVectors: 0
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
@@ -36189,6 +36278,27 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 908888257}
   m_Mesh: {fileID: 4300008, guid: ed9ec036e5afbd34dae4f1602a3d77b8, type: 3}
+--- !u!65 &908888261
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 908888257}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.5380497, y: 2.5655234, z: 5.672479}
+  m_Center: {x: 0.000002861023, y: 0.00000023841858, z: -0.0000019073485}
 --- !u!1001 &912095838
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -55143,6 +55253,7 @@ GameObject:
   - component: {fileID: 1470001807}
   - component: {fileID: 1470001809}
   - component: {fileID: 1470001808}
+  - component: {fileID: 1470001810}
   m_Layer: 0
   m_Name: Concrete_fence_v2_S
   m_TagString: Untagged
@@ -55177,7 +55288,7 @@ MeshRenderer:
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
-  m_MotionVectors: 1
+  m_MotionVectors: 0
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
@@ -55218,6 +55329,27 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1470001806}
   m_Mesh: {fileID: 4300008, guid: ed9ec036e5afbd34dae4f1602a3d77b8, type: 3}
+--- !u!65 &1470001810
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1470001806}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.5380497, y: 2.5655234, z: 5.672479}
+  m_Center: {x: 0.000002861023, y: 0.00000023841858, z: -0.0000019073485}
 --- !u!1 &1471546802
 GameObject:
   m_ObjectHideFlags: 0
@@ -55408,8 +55540,8 @@ Transform:
   m_GameObject: {fileID: 1476142923}
   serializedVersion: 2
   m_LocalRotation: {x: 0.000000021855694, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -12.63, y: 0.3, z: -1.85}
-  m_LocalScale: {x: 3, y: 3.5, z: 3.4}
+  m_LocalPosition: {x: -13.41, y: 0.3, z: -2.51}
+  m_LocalScale: {x: 1.8948629, y: 2.3034055, z: 1.9359238}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 93555165}
