@@ -9,7 +9,6 @@ public abstract class ButtonBase : MonoBehaviour
         btn.onClick.AddListener(OnClicked);
     }
 
-    // Update is called once per frame
     public abstract void OnClicked();
     
 }
