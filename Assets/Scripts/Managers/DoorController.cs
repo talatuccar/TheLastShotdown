@@ -14,13 +14,7 @@ public class DoorController : MonoBehaviour
         {
             correctPassword += GameManager.Instance.passwordManager.GetPasswordPart(i).ToString();
         }
-    }
-
-    void Update()
-    {
-
-    }
-
+    }  
     private void OpenPasswordPanel()
     {
        
@@ -32,9 +26,7 @@ public class DoorController : MonoBehaviour
 
     public void OnPasswordCorrect()
     {
-
-        doorUp_Anim.Play();
-      
+        doorUp_Anim.Play();   
     }
 
     private void OnTriggerEnter(Collider other)
@@ -46,7 +38,6 @@ public class DoorController : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-
             GameManager.Instance.numpadUI.ClosePanel(); 
         }
     }

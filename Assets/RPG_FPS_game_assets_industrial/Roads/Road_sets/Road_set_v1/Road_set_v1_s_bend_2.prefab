@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4000013872234864}
   - component: {fileID: 33000013039774250}
   - component: {fileID: 23000011349794528}
-  - component: {fileID: 64000013236190884}
+  - component: {fileID: 6373317655448126894}
   m_Layer: 9
   m_Name: Road_set_v1_s_bend_2
   m_TagString: Stone
@@ -87,8 +87,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &64000013236190884
-MeshCollider:
+--- !u!65 &6373317655448126894
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -105,7 +105,6 @@ MeshCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300076, guid: c7f7a9ec09a97d144963b6dd16448dc3, type: 3}
+  serializedVersion: 3
+  m_Size: {x: 10.000013, y: 0.18364465, z: 10.000005}
+  m_Center: {x: -0.00001192093, y: 0, z: -0.0000009536743}

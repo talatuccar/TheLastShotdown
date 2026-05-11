@@ -11,26 +11,20 @@ public abstract class WeaponBase : MonoBehaviour
     public static event Action OnShooted;
 
     private ParticleSystem muzzleFlashParticle;
-
-
     private void Start()
-    {
-       
+    {    
         if (weaponData.muzzleFlashPrefab != null)
         {
            
             GameObject flashGo = Instantiate(weaponData.muzzleFlashPrefab, muzzlePoint.position, muzzlePoint.rotation, muzzlePoint);
-
-           
-            muzzleFlashParticle = flashGo.GetComponent<ParticleSystem>();
-
-           
+          
+            muzzleFlashParticle = flashGo.GetComponent<ParticleSystem>();     
         }
     }
     public void Fire()
     {
         if (Time.timeScale == 0) return;
-        //if (UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject()) return;
+        
         if (Time.time >= nextFireTime)
         {
             ExecuteShoot();
@@ -43,7 +37,6 @@ public abstract class WeaponBase : MonoBehaviour
         PlayerStats.totalShootedBullet++;
         if (PlayerInventory.Instance.CurrentAmmo() <= 0)
         {
-            Debug.Log("Mermi yok!");
             SoundManager.Instance.PlayAudioClip(weaponData.emptyGunSound);
             return;
         }
@@ -84,7 +77,6 @@ public abstract class WeaponBase : MonoBehaviour
             HandleHitVisuals(hit);
         }
 
-        //GetComponentInParent<WeaponManager>().ApplyRecoil();
         GetComponentInParent<WeaponSway>().ApplyRecoil();
     }
 
@@ -96,9 +88,7 @@ public abstract class WeaponBase : MonoBehaviour
         string poolTag = "";
         if (hit.transform.gameObject.layer == LayerMask.NameToLayer("NPC"))
         {
-            PlayerStats.totalSuccessfulHits++;
-            Debug.Log("NPC Vuruldu! Kan çýkýyor");
-            
+            PlayerStats.totalSuccessfulHits++;                    
         }
 
         if (hit.transform.CompareTag("Metal"))
@@ -116,11 +106,8 @@ public abstract class WeaponBase : MonoBehaviour
         {
             // Normal vektörü kullanarak mermi izinin yüzeye doðru bakmasýný saðla
             Quaternion rotation = Quaternion.LookRotation(hit.normal);
-
            
             EffectPooler.Instance.SpawnFromPool(poolTag, hit.point + (hit.normal * 0.01f), rotation);
         }
     }
-
-
 }

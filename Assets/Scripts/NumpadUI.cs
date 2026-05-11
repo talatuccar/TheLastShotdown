@@ -1,6 +1,5 @@
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class NumpadUI : MonoBehaviour
 {
@@ -11,7 +10,6 @@ public class NumpadUI : MonoBehaviour
     public void OpenPanel(DoorController door)
     {
         Time.timeScale = 0;
-        //PlayerStateManager.Instance.SetControls(false); 
         _targetDoor = door;
         gameObject.SetActive(true);
         _currentInput = "";
@@ -43,14 +41,12 @@ public class NumpadUI : MonoBehaviour
         }
 
         if (_currentInput == realPassword)
-        {
-            Debug.Log("ÞÝFRE DOÐRU!");
+        {      
             _targetDoor.OnPasswordCorrect();
             ClosePanel();
         }
         else
         {
-            Debug.Log("YANLIÞ ÞÝFRE!");
             _currentInput = ""; 
             UpdateUI();
         }
@@ -59,11 +55,9 @@ public class NumpadUI : MonoBehaviour
     public void ClosePanel()
     {
         Time.timeScale = 1;
-        //PlayerStateManager.Instance.SetControls(true);
         gameObject.SetActive(false);
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
-
     void UpdateUI() => inputField.text = _currentInput;
 }

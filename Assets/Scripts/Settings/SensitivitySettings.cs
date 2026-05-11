@@ -33,8 +33,6 @@ public class SensitivitySettings : MonoBehaviour
 
         PlayerPrefs.SetFloat("MouseSensitivity", sensitivityValue);
         PlayerPrefs.SetInt("SensitivityIndex", index);
-        PlayerPrefs.Save();
-
-        
+        PlayerPrefs.Save();        
     }
 }

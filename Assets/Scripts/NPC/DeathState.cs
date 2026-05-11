@@ -1,4 +1,3 @@
-using AI.FSM;
 using System.Collections;
 using UnityEngine;
 
@@ -49,10 +48,8 @@ namespace AI.FSM
                         _enemy.anim.SetTrigger("Die");
                         break;
                 }
-            }
-
-            
-            // çok kýsa bir süre sonraya ertelemek en saðlýklýsýdýr.
+            }          
+           
             _enemy.StartCoroutine(DisableAgentDelayed());
         }
 

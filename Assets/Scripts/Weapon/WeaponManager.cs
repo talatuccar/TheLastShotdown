@@ -1,4 +1,3 @@
-using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
@@ -147,15 +146,4 @@ public class WeaponManager : MonoBehaviour
         isFiring = true;
         if (currentWeapon != null) currentWeapon.Fire();
     }
-
-    //public void ApplyRecoil()
-    //{
-    //    if (currentWeapon == null) return;
-       
-        
-    //    targetRotation += new Vector3(-currentWeapon.weaponData.recoilX,
-    //        Random.Range(-currentWeapon.weaponData.recoilY, currentWeapon.weaponData.recoilY),
-    //        Random.Range(-currentWeapon.weaponData.recoilY, currentWeapon.weaponData.recoilY));
-    //}
-
 }

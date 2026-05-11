@@ -1,4 +1,3 @@
-using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -15,7 +14,5 @@ public class DifficultyManager : MonoBehaviour
         PlayerPrefs.SetInt("difficulty", difficultyData.spawnedEnemyCount);
 
         SceneManager.LoadScene("LoadingScene");
-    }
-
-    
+    }    
 }

@@ -7,7 +7,6 @@ public class WeaponDataSo : ScriptableObject
     public string weaponName;
     public float damage;
     public float fireRate;
-    //public int AmmoAmmount;
     public float range;
     public int maxAmmo; 
 

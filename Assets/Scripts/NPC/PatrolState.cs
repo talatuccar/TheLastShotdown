@@ -49,8 +49,6 @@ public class PatrolState : IState
 
         _currentWaypointIndex = newIndex;
         _enemy.agent.SetDestination(_enemy.waypoints[_currentWaypointIndex].transform.position);
-
-
     } 
     public void OnExit() { }
 }

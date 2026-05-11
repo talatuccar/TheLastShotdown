@@ -1,4 +1,4 @@
-using AI.FSM; // State Machine klasörün/namespace'in
+using AI.FSM; 
 using UnityEngine;
 
 public class EnemyHealth : MonoBehaviour, IDamageable
@@ -11,15 +11,11 @@ public class EnemyHealth : MonoBehaviour, IDamageable
     private EnemyController _enemy;
     private float _nextHitReactionTime;
     [SerializeField] private float hitReactionCooldown = 2f;
-
-
     private void Awake()
     {
         _currentHealth = maxHealth;
         _enemy = GetComponent<EnemyController>();
     }
-
-
     public void ProcessHit(float amount, bool isHeadshot, Vector3 hitPoint)
     {
         if (_isDead) return;
@@ -27,7 +23,6 @@ public class EnemyHealth : MonoBehaviour, IDamageable
         _currentHealth -= amount;
 
         EffectPooler.Instance.SpawnFromPool("Blood", hitPoint, Quaternion.identity);
-
 
         if (_currentHealth <= 0)
         {
@@ -40,12 +35,10 @@ public class EnemyHealth : MonoBehaviour, IDamageable
             PlayHitReaction();
         }
     }
-
     private void PlayHitReaction()
     {
         if (Time.time < _nextHitReactionTime) return;
         if (_enemy.anim == null) return;
-
 
 
         if (_enemy.agent.velocity.magnitude >= 1)
@@ -56,10 +49,6 @@ public class EnemyHealth : MonoBehaviour, IDamageable
         {
             _enemy.anim.SetTrigger("Hit_Idle");
         }
-
-
-
-
 
         _nextHitReactionTime = Time.time + hitReactionCooldown;
     }
@@ -97,5 +86,4 @@ public class EnemyHealth : MonoBehaviour, IDamageable
 
         Destroy(gameObject, 5f);
     }
-
 }
