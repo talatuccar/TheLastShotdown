@@ -1,12 +1,9 @@
 using UnityEngine;
-
 public class PatrolState : IState
 {
     private EnemyController _enemy;
     private int _currentWaypointIndex;
-
     public PatrolState(EnemyController enemy) => _enemy = enemy;
-
     public void OnEnter()
     {
       
@@ -20,15 +17,11 @@ public class PatrolState : IState
 
     public void OnUpdate()
     {
-
-
-
         if (_enemy.Player != null)
         {
             _enemy.ChangeState(new ChaseState(_enemy));
             return;
         }
-
 
         if (!_enemy.agent.pathPending && _enemy.agent.remainingDistance < 0.5f)
         {

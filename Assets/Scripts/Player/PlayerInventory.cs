@@ -31,8 +31,6 @@ public class PlayerInventory : MonoBehaviour
 
             OnHealthDataChanged?.Invoke(playerInventoryDataSo.HealtAmount);
     }
-
-
     public void AddHealth(int amount)
     {
         playerInventoryDataSo.HealtAmount += amount;

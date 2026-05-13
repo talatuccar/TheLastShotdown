@@ -75,43 +75,21 @@ public class TacticalEnemy : MonoBehaviour
         Vector3 eyePos = transform.position + Vector3.up * 1.5f;
         Vector3 dirToPlayer = (playerTransform.position + Vector3.up * 1f) - eyePos;
 
-        //if (Physics.Raycast(eyePos, dirToPlayer, out RaycastHit hit, dynamicCloseDistance + 10f))
-        //{
-        //    if (hit.transform.CompareTag("Player"))
-        //    {
-        //        hasLineOfSight = true;
-
-        //    }
-
-        //}
-
-        
-        // Eðer bir þeye çarparsa KIRMIZI, hiçbir þeye çarpmazsa YEÞÝL görünecek
-        float rayLength = 50f; // Çizgi boyu
+      
+        float rayLength = 50f; 
 
         if (Physics.Raycast(eyePos, dirToPlayer, out RaycastHit hit, rayLength, ~0, QueryTriggerInteraction.Ignore))
         {
-            // ÇARPTIÐI YERE KADAR ÇÝZGÝ ÇEK (KIRMIZI)
-            Debug.DrawLine(eyePos, hit.point, Color.red);
+           
 
             if (hit.transform.CompareTag("Player"))
             {
                 hasLineOfSight = true;
-                // OYUNCUYU GÖRÜYORSA MAVÝ ÇÝZGÝ ÇEK
-                Debug.DrawLine(eyePos, hit.point, Color.blue);
+                
             }
-            else
-            {
-                // Duvara veya baþka bir þeye çarpýyorsa ismini konsola yazdýralým
-                // Böylece neyin engellediðini anlarýz
-                // Debug.Log("Raycast þuna çarptý: " + hit.transform.name);
-            }
+           
         }
-        else
-        {
-            
-            Debug.DrawRay(eyePos, dirToPlayer * rayLength, Color.green);
-        }
+       
         if (isInRange && hasLineOfSight)
         {
 
@@ -148,27 +126,10 @@ public class TacticalEnemy : MonoBehaviour
     }
 
     public void ApplyDamage() // tacticalShooting animation event
-    {
-       
-
+    {     
             muzzleFlashParticle.Play();
             SoundManager.Instance.PlayAudioClip(enemyData.enemyfireSound);
-            int randomHealthDecrease = UnityEngine.Random.Range(0, 10);
+            int randomHealthDecrease = Random.Range(enemyData.minDamageAmount,enemyData.maxDamageAmount);
             PlayerInventory.Instance.DecreaseHealth(randomHealthDecrease);
-        
-
-    }
-
-    public void ShowPasswordDigit()
-    {
-
-        Debug.Log("Tactical Enemy Þifre ");
-
-
-    }
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.cyan;
-        Gizmos.DrawWireSphere(transform.position, dynamicCloseDistance);
     }
 }

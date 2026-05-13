@@ -8,6 +8,10 @@ public class EnemyDataSo : ScriptableObject
     public float detectionRadius = 10f;
     public float attackRange = 5f;
 
+    public int minDamageAmount;
+    public int maxDamageAmount;
+
     public GameObject muzzleFlashPrefab;
     public AudioClip enemyfireSound;
+
 }

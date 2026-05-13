@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class DoorController : MonoBehaviour
 {
-
     public string correctPassword = null;
     public Animation doorUp_Anim;
     [SerializeField] private OcclusionPortal doorPortal;

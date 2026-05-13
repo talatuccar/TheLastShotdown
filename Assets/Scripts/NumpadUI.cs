@@ -1,12 +1,10 @@
 using TMPro;
 using UnityEngine;
-
 public class NumpadUI : MonoBehaviour
 {
     public TextMeshProUGUI inputField; 
     private string _currentInput = "";
     private DoorController _targetDoor;
-
     public void OpenPanel(DoorController door)
     {
         Time.timeScale = 0;
@@ -51,7 +49,6 @@ public class NumpadUI : MonoBehaviour
             UpdateUI();
         }
     }
-
     public void ClosePanel()
     {
         Time.timeScale = 1;

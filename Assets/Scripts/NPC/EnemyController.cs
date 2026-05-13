@@ -133,32 +133,13 @@ public class EnemyController : MonoBehaviour
             GameManager.Instance.passwordManagerUI.ShowPasswordFragment(passwordIndex + 1, digit);
         }
     }
-
-    private void OnDrawGizmosSelected()
-    {
-        if (enemyData == null) return;
-
-        
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, enemyData.detectionRadius);
-
-        
-        if (player != null)
-        {
-            Gizmos.color = Color.green;
-            Gizmos.DrawLine(transform.position + Vector3.up * 1.5f, player.position);
-        }
-
-
-    }
-
     public void Shoot()
     {
         if (muzzleFlashParticle != null && CanSeePlayer())
         {
             muzzleFlashParticle.Play();
             SoundManager.Instance.PlayAudioClip(enemyData.enemyfireSound);
-            int randomHealthDecrease = UnityEngine.Random.Range(0, 10);
+            int randomHealthDecrease = Random.Range(enemyData.minDamageAmount,enemyData.maxDamageAmount);
             PlayerInventory.Instance.DecreaseHealth(randomHealthDecrease);
 
         }

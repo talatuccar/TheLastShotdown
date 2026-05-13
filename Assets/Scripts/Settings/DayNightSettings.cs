@@ -4,7 +4,6 @@ using UnityEngine.UI;
 public class DayNightSettings : MonoBehaviour
 {
     public Toggle nightModeToggle; 
-
     void Start()
     {
       
@@ -15,7 +14,6 @@ public class DayNightSettings : MonoBehaviour
             nightModeToggle.isOn = isNight;
         }
     }
-
     public void SetNightMode(bool isNight)
     {
        

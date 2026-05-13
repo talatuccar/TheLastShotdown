@@ -9,10 +9,6 @@ public class Hitbox : MonoBehaviour, IDamageable
 
     private void Awake()
     {
-        // Bu fonksiyon hiyerarþide yukarý doðru týrmanýr 
-        // ve bulduðu ÝLK saðlýk scriptine yapýþýr. 
-        // Yani 8 NPC'yi tutan o en üstteki boþ objeye kadar gitmez, 
-        // kendi NPC'sinin gövdesinde durur.
         generalHealthSystem = GetComponentInParent<EnemyHealth>();
         tacticalHealthSystem = GetComponentInParent<TacticalHealth>();
     }

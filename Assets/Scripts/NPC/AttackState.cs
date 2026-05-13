@@ -1,7 +1,5 @@
-﻿using AI.FSM;
-using System;
+﻿using System;
 using UnityEngine;
-
 
 public class AttackState : IState
 {

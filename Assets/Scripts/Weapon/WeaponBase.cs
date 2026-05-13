@@ -61,10 +61,10 @@ public abstract class WeaponBase : MonoBehaviour
         int layerMask = ~(1 << playerLayer);
         if (Physics.Raycast(ray, out RaycastHit hit, weaponData.range, layerMask))
         {
-            //Debug.Log("Vurulan: " + hit.transform.name);
+           
             PlayerStats.totalHitDistance += hit.distance;
 
-            Debug.Log("mesafe: " + hit.distance);
+           
            
             IDamageable hitTarget = hit.transform.GetComponent<IDamageable>();
 

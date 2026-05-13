@@ -17,14 +17,11 @@ public class TacticalHealth : MonoBehaviour, IDamageable
         
         if (anim == null) anim = GetComponentInChildren<Animator>();
     }
-
-   
     public void TakeDamage(float damage, Vector3 hitPoint)
     {
         ProcessShot(damage, false, hitPoint);
     }
 
-    // Hitbox scriptinden doðrudan çaðrýlan ana metod (Kafa/Vücut ayrýmý yapar)
     public void ProcessShot(float damage, bool isHeadshot, Vector3 hitPoint)
     {
         if (isDead) return;
@@ -32,27 +29,23 @@ public class TacticalHealth : MonoBehaviour, IDamageable
         if (isHeadshot)
         {
             currentHealth = 0;
-            Debug.Log("<color=red>TACTICAL HEADSHOT!</color>");
         }
         else
         {
             currentHealth -= damage;
         }
-
-        
+     
         if (bloodEffectPrefab != null)
         {
             GameObject blood = Instantiate(bloodEffectPrefab, hitPoint, Quaternion.identity);
             Destroy(blood, 2f);
         }
-
       
         if (currentHealth <= 0)
         {
             Die(isHeadshot);
         }
     }
-
     private void Die(bool wasHeadshot)
     {
         if (isDead) return; 
@@ -73,9 +66,7 @@ public class TacticalHealth : MonoBehaviour, IDamageable
             {
                 anim.SetTrigger("Die");
             }
-        }
-
-     
+        }  
        
         Destroy(gameObject, 5f); 
     }
