@@ -5,7 +5,7 @@ public class DoorController : MonoBehaviour
 
     public string correctPassword = null;
     public Animation doorUp_Anim;
-    
+    [SerializeField] private OcclusionPortal doorPortal;
     void Start()
     {
     
@@ -26,7 +26,9 @@ public class DoorController : MonoBehaviour
 
     public void OnPasswordCorrect()
     {
-        doorUp_Anim.Play();   
+        doorUp_Anim.Play();
+        doorPortal.open = true;
+
     }
 
     private void OnTriggerEnter(Collider other)
